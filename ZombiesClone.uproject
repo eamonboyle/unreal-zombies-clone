@@ -7,7 +7,10 @@
 		{
 			"Name": "ZombiesClone",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
@@ -33,6 +36,10 @@
 				"Linux",
 				"Mac"
 			]
+		},
+		{
+			"Name": "RiderLink",
+			"Enabled": true
 		}
 	]
 }
