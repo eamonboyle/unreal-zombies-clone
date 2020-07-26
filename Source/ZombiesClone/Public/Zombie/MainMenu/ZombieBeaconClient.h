@@ -6,9 +6,8 @@
 #include "OnlineBeaconClient.h"
 #include "ZombieBeaconClient.generated.h"
 
-/**
- * 
- */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FConnectSuccess, bool, FConnected);
+
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconClient : public AOnlineBeaconClient
 {
@@ -16,6 +15,10 @@ class ZOMBIESCLONE_API AZombieBeaconClient : public AOnlineBeaconClient
 
 public:
     AZombieBeaconClient();
+
+protected:
+    UPROPERTY(BlueprintAssignable)
+    FConnectSuccess FConnected;
 
 protected:
     UFUNCTION(BlueprintCallable)
