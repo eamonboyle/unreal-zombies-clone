@@ -16,6 +16,7 @@ AZombieBeaconHostObject::AZombieBeaconHostObject()
 void AZombieBeaconHostObject::UpdateLobbyInfo(FZombieLobbyInfo NewLobbyInfo)
 {
     LobbyInfo.MapImage = NewLobbyInfo.MapImage;
+    LobbyInfo.MapName = NewLobbyInfo.MapName;
     UpdateClientLobbyInfo();
 }
 

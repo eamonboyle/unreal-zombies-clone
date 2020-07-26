@@ -15,6 +15,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere)
     class UTexture2D* MapImage;
 
+    UPROPERTY(BlueprintReadWrite, EditAnywhere)
+    FString MapName;
+
     UPROPERTY(BlueprintReadOnly)
     TArray<FString> PlayerList;
 };
