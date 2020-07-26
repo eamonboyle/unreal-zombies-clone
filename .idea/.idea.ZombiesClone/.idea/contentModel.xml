@@ -26,10 +26,20 @@
             <e p="Player" t="Include">
               <e p="CharacterBase.cpp" t="Include" />
             </e>
+            <e p="Zombie" t="Include">
+              <e p="Game" t="Include">
+                <e p="ZombieGameInstanceBase.cpp" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Public" t="Include">
             <e p="Player" t="Include">
               <e p="CharacterBase.h" t="Include" />
+            </e>
+            <e p="Zombie" t="Include">
+              <e p="Game" t="Include">
+                <e p="ZombieGameInstanceBase.h" t="Include" />
+              </e>
             </e>
           </e>
           <e p="ZombiesClone.Build.cs" t="Include" />
