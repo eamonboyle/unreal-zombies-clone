@@ -16,4 +16,10 @@ class ZOMBIESCLONE_API AZombieMainMenuGameMode : public AGameModeBase
 
 public:
     AZombieMainMenuGameMode();
+
+protected:
+    UFUNCTION(BlueprintCallable)
+    bool CreateHostBeacon();
+
+    class AZombieBeaconHostObject* HostObject;
 };

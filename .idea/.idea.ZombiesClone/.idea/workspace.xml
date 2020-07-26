@@ -20,17 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/Zombie/Game/ZombieGameInstanceBase.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/ZombieBeaconClient.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/ZombieBeaconHostObject.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/ZombieMainMenuGameMode.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu/MainMenuLevel.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu/MainMenuLevel.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" afterDir="false" />
@@ -68,12 +64,12 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/ZombieMainMenuGameMode.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" />
       </list>
     </option>
   </component>
@@ -516,7 +512,7 @@
       <option name="presentableId" value="Default" />
       <updated>1595714114886</updated>
       <workItem from="1595714168444" duration="5978000" />
-      <workItem from="1595768452952" duration="969000" />
+      <workItem from="1595768452952" duration="4200000" />
     </task>
     <servers />
   </component>
@@ -539,5 +535,15 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1595771434604">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1595771434604" />
+    <state x="578" y="183" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595771625065">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="578" y="183" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1595771625065" />
   </component>
 </project>

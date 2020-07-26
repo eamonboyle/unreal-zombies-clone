@@ -16,4 +16,7 @@ class ZOMBIESCLONE_API AZombieBeaconHostObject : public AOnlineBeaconHostObject
 
 public:
     AZombieBeaconHostObject();
+
+protected:
+    virtual void OnClientConnected(AOnlineBeaconClient* NewClientActor, UNetConnection* ClientConnection) override;
 };

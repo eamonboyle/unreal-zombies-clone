@@ -16,4 +16,11 @@ class ZOMBIESCLONE_API AZombieBeaconClient : public AOnlineBeaconClient
 
 public:
     AZombieBeaconClient();
+
+protected:
+    UFUNCTION(BlueprintCallable)
+    bool ConnectToServer(const FString& Address);
+
+    virtual void OnConnected() override;
+    virtual void OnFailure() override;
 };
