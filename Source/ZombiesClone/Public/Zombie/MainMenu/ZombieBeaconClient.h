@@ -30,6 +30,8 @@ protected:
     UPROPERTY(BlueprintAssignable)
     FLobbyUpdated FOnLobbyUpdated;
 
+    uint8 PlayerIndex;
+
 protected:
     UFUNCTION(BlueprintCallable)
     bool ConnectToServer(const FString& Address);
@@ -48,4 +50,8 @@ public:
     UFUNCTION(Client, Reliable)
     void Client_OnLobbyUpdated(FZombieLobbyInfo LobbyInfo);
     void Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo LobbyInfo);
+
+    void SetPlayerIndex(uint8 Index);
+
+    uint8 GetPlayerIndex();
 };

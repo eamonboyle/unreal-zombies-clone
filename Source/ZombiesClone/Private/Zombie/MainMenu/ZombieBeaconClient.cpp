@@ -5,7 +5,7 @@
 
 AZombieBeaconClient::AZombieBeaconClient()
 {
-    
+    PlayerIndex = 0;
 }
 
 bool AZombieBeaconClient::ConnectToServer(const FString& Address)
@@ -37,6 +37,16 @@ void AZombieBeaconClient::Client_OnDisconnected_Implementation()
 void AZombieBeaconClient::Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo LobbyInfo)
 {
     FOnLobbyUpdated.Broadcast(LobbyInfo);
+}
+
+void AZombieBeaconClient::SetPlayerIndex(uint8 Index)
+{
+    PlayerIndex = Index;
+}
+
+uint8 AZombieBeaconClient::GetPlayerIndex()
+{
+    return PlayerIndex;
 }
 
 void AZombieBeaconClient::LeaveLobby()
