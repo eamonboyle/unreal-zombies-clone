@@ -34,6 +34,11 @@ void AZombieBeaconClient::Client_OnDisconnected_Implementation()
     FOnDisconnected.Broadcast();
 }
 
+void AZombieBeaconClient::Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo LobbyInfo)
+{
+    FOnLobbyUpdated.Broadcast(LobbyInfo);
+}
+
 void AZombieBeaconClient::LeaveLobby()
 {
     DestroyBeacon();

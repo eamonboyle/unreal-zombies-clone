@@ -13,6 +13,23 @@ AZombieBeaconHostObject::AZombieBeaconHostObject()
     BeaconTypeName = ClientBeaconActorClass->GetName();
 }
 
+void AZombieBeaconHostObject::UpdateLobbyInfo(FZombieLobbyInfo NewLobbyInfo)
+{
+    LobbyInfo.MapImage = NewLobbyInfo.MapImage;
+    UpdateClientLobbyInfo();
+}
+
+void AZombieBeaconHostObject::UpdateClientLobbyInfo()
+{
+    for (AOnlineBeaconClient* ClientBeacon : ClientActors)
+    {
+        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(ClientBeacon))
+        {
+            Client->Client_OnLobbyUpdated(LobbyInfo);
+        }
+    }
+}
+
 void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientActor, UNetConnection* ClientConnection)
 {
     Super::OnClientConnected(NewClientActor, ClientConnection);
@@ -20,6 +37,10 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     if (NewClientActor)
     {
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
+        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(NewClientActor))
+        {
+            Client->Client_OnLobbyUpdated(LobbyInfo);
+        }
     }
     else
     {
