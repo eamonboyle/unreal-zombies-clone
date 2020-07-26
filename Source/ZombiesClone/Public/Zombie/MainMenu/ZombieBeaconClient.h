@@ -6,7 +6,8 @@
 #include "OnlineBeaconClient.h"
 #include "ZombieBeaconClient.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FConnectSuccess, bool, FConnected);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FConnectSuccess, bool, FOnConnected);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDisconnected);
 
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconClient : public AOnlineBeaconClient
@@ -18,12 +19,24 @@ public:
 
 protected:
     UPROPERTY(BlueprintAssignable)
-    FConnectSuccess FConnected;
+    FConnectSuccess FOnConnected;
+
+    UPROPERTY(BlueprintAssignable)
+    FDisconnected FOnDisconnected;
 
 protected:
     UFUNCTION(BlueprintCallable)
     bool ConnectToServer(const FString& Address);
 
+    UFUNCTION(BlueprintCallable)
+    void LeaveLobby();
+
     virtual void OnConnected() override;
     virtual void OnFailure() override;
+
+public:
+    UFUNCTION(Client, Reliable)
+    virtual void Client_OnDisconnected();
+
+    virtual void Client_OnDisconnected_Implementation();
 };

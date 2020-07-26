@@ -3,6 +3,9 @@
 
 #include "ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h"
 #include "ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h"
+#include "ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h"
+
+#include "OnlineBeaconHost.h"
 
 AZombieBeaconHostObject::AZombieBeaconHostObject()
 {
@@ -21,5 +24,55 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
+    }
+}
+
+void AZombieBeaconHostObject::NotifyClientDisconnected(AOnlineBeaconClient* LeavingClientActor)
+{
+    Super::NotifyClientDisconnected(LeavingClientActor);
+
+    UE_LOG(LogTemp, Warning, TEXT("Client has disconnected"));
+}
+
+void AZombieBeaconHostObject::ShutdownServer()
+{
+    // unregister server from database via Web API
+    DisconnectAllClients();
+
+    // when all clients are disconnected get the beacon host and unregister it 
+    if (AOnlineBeaconHost* Host = Cast<AOnlineBeaconHost>(GetOwner()))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Destroying host beacon"));
+        Host->UnregisterHost(BeaconTypeName);
+        Host->DestroyBeacon();
+    }
+}
+
+void AZombieBeaconHostObject::DisconnectAllClients()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Disconnected all clients"));
+
+    for (AOnlineBeaconClient* Client : ClientActors)
+    {
+        if (Client != nullptr)
+        {
+            DisconnectClient(Client);
+        }
+    }
+}
+
+void AZombieBeaconHostObject::DisconnectClient(AOnlineBeaconClient* ClientActor)
+{
+    AOnlineBeaconHost* BeaconHost = Cast<AOnlineBeaconHost>(GetOwner());
+
+    if (BeaconHost)
+    {
+        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(ClientActor))
+        {
+            UE_LOG(LogTemp, Warning, TEXT("DISCONNECTING CLIENT %s"), *ClientActor->GetName());
+            Client->Client_OnDisconnected();
+        }
+
+        BeaconHost->DisconnectClient(ClientActor);
     }
 }

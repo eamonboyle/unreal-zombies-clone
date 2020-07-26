@@ -9,13 +9,16 @@
 AZombieMainMenuGameMode::AZombieMainMenuGameMode()
 {
     HostObject = nullptr;
+    Host = nullptr;
 }
 
 bool AZombieMainMenuGameMode::CreateHostBeacon()
 {
     // tries to create a host beacon, if it can register our HostObject it will return true
     // otherwise it will return false
-    if (AOnlineBeaconHost* Host = GetWorld()->SpawnActor<AOnlineBeaconHost>(AOnlineBeaconHost::StaticClass()))
+    Host = GetWorld()->SpawnActor<AOnlineBeaconHost>(AOnlineBeaconHost::StaticClass());
+    
+    if (Host != nullptr)
     {
         if (Host->InitHost())
         {

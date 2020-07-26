@@ -19,11 +19,22 @@ bool AZombieBeaconClient::ConnectToServer(const FString& Address)
 void AZombieBeaconClient::OnConnected()
 {
     UE_LOG(LogTemp, Warning, TEXT("BEACON CLIENT CONNECTED"));
-    FConnected.Broadcast(true);
+    FOnConnected.Broadcast(true);
 }
 
 void AZombieBeaconClient::OnFailure()
 {
     UE_LOG(LogTemp, Warning, TEXT("BEACON CLIENT FAILED TO CONNECT"));
-    FConnected.Broadcast(false);
+    FOnConnected.Broadcast(false);
+}
+
+void AZombieBeaconClient::Client_OnDisconnected_Implementation()
+{
+    UE_LOG(LogTemp, Warning, TEXT("DISCONNECTED_Implementation"));
+    FOnDisconnected.Broadcast();
+}
+
+void AZombieBeaconClient::LeaveLobby()
+{
+    DestroyBeacon();
 }

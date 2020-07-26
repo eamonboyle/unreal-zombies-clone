@@ -22,4 +22,9 @@ protected:
     bool CreateHostBeacon();
 
     class AZombieBeaconHostObject* HostObject;
+
+    class AOnlineBeaconHost* Host;
+
+    UFUNCTION(BlueprintCallable)
+    class AZombieBeaconHostObject* GetBeaconHost() const { return HostObject; };
 };
