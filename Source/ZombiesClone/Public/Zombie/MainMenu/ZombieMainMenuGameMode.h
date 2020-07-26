@@ -26,5 +26,5 @@ protected:
     class AOnlineBeaconHost* Host;
 
     UFUNCTION(BlueprintCallable)
-    class AZombieBeaconHostObject* GetBeaconHost() const { return HostObject; };
+    class AZombieBeaconHostObject* GetBeaconHost();
 };

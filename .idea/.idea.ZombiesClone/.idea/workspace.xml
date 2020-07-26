@@ -20,11 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Maps/MainMenu/W_PlayerLobbySlot.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +48,14 @@
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ApplicationCore/Private/Mac/MacCursor.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ImageWrapper/Private/Formats/IcnsImageWrapper.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/NetcodeUnitTest/NetcodeUnitTest/Source/NetcodeUnitTest/Classes/ClientUnitTest.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Developer/GraphColor/Private/listcoll.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Player/CharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Editor/UMGEditor/Private/Details/SFunctionSelector.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Player/CharacterBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/Online/OnlineSubsystemUtils/Source/OnlineSubsystemUtils/Public/OnlineBeaconHostObject.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -65,12 +69,12 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/MainMenu/ZombieMainMenuGameMode.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
       </list>
     </option>
   </component>
@@ -513,7 +517,8 @@
       <option name="presentableId" value="Default" />
       <updated>1595714114886</updated>
       <workItem from="1595714168444" duration="5978000" />
-      <workItem from="1595768452952" duration="17685000" />
+      <workItem from="1595768452952" duration="19347000" />
+      <workItem from="1595800129245" duration="1631000" />
     </task>
     <servers />
   </component>
@@ -532,6 +537,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -546,10 +552,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="578" y="183" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1595771625065" />
-    <state x="1094" y="217" width="648" height="534" key="find.popup" timestamp="1595797136543">
+    <state x="1094" y="217" width="747" height="534" key="find.popup" timestamp="1595800382559">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1094" y="217" width="648" height="534" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1595797136543" />
+    <state x="1094" y="217" width="747" height="534" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1595800382559" />
     <state x="616" y="243" key="run.anything.popup" timestamp="1595796648212">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

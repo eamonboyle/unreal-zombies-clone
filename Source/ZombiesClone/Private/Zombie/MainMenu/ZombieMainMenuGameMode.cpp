@@ -37,3 +37,8 @@ bool AZombieMainMenuGameMode::CreateHostBeacon()
 
     return false;
 }
+
+AZombieBeaconHostObject* AZombieMainMenuGameMode::GetBeaconHost()
+{
+    return HostObject;
+}

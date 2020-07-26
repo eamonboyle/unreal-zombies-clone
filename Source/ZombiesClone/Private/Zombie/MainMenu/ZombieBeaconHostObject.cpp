@@ -18,6 +18,7 @@ void AZombieBeaconHostObject::UpdateLobbyInfo(FZombieLobbyInfo NewLobbyInfo)
     LobbyInfo.MapImage = NewLobbyInfo.MapImage;
     LobbyInfo.MapName = NewLobbyInfo.MapName;
     UpdateClientLobbyInfo();
+    FOnHostLobbyUpdated.Broadcast(LobbyInfo);
 }
 
 void AZombieBeaconHostObject::UpdateClientLobbyInfo()
@@ -31,6 +32,14 @@ void AZombieBeaconHostObject::UpdateClientLobbyInfo()
     }
 }
 
+void AZombieBeaconHostObject::BeginPlay()
+{
+    Super::BeginPlay();
+
+    // set the host as the first player in the player list
+    LobbyInfo.PlayerList.Add(FString("Host Player"));
+}
+
 void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientActor, UNetConnection* ClientConnection)
 {
     Super::OnClientConnected(NewClientActor, ClientConnection);
@@ -38,10 +47,14 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     if (NewClientActor)
     {
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
-        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(NewClientActor))
-        {
-            Client->Client_OnLobbyUpdated(LobbyInfo);
-        }
+
+        FString PlayerName = FString("Player ");
+        PlayerName.Append(FString::FromInt(LobbyInfo.PlayerList.Num()));
+        LobbyInfo.PlayerList.Add(PlayerName);
+
+        FOnHostLobbyUpdated.Broadcast(LobbyInfo);
+        
+        UpdateClientLobbyInfo();
     }
     else
     {

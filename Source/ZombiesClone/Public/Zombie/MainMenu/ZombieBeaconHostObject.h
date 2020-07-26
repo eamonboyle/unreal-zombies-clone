@@ -22,6 +22,8 @@ public:
     TArray<FString> PlayerList;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHostLobbyUpdated, FZombieLobbyInfo, FOnHostLobbyUpdated);
+
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconHostObject : public AOnlineBeaconHostObject
 {
@@ -33,12 +35,17 @@ public:
 protected:
     FZombieLobbyInfo LobbyInfo;
 
+    UPROPERTY(BlueprintAssignable)
+    FHostLobbyUpdated FOnHostLobbyUpdated;
+
     UFUNCTION(BlueprintCallable)
     void UpdateLobbyInfo(FZombieLobbyInfo NewLobbyInfo);
 
     void UpdateClientLobbyInfo();
 
 protected:
+    virtual void BeginPlay() override;
+
     virtual void OnClientConnected(AOnlineBeaconClient* NewClientActor, UNetConnection* ClientConnection) override;
     virtual void NotifyClientDisconnected(AOnlineBeaconClient* LeavingClientActor) override;
 
