@@ -12,6 +12,8 @@
 UCLASS()
 class ZOMBIESCLONE_API AZombieMainMenuGameMode : public AGameModeBase
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AZombieMainMenuGameMode();
 };

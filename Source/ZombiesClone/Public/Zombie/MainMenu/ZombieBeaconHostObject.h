@@ -12,6 +12,8 @@
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconHostObject : public AOnlineBeaconHostObject
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AZombieBeaconHostObject();
 };
