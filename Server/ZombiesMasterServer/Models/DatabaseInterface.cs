@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using ZombiesMasterServer.Helpers;
 
 namespace ZombiesMasterServer.Models
 {
@@ -14,33 +17,47 @@ namespace ZombiesMasterServer.Models
 
         public DatabaseInterface()
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["WorldAtWarConnectionString"].ConnectionString;
-            SqlConnection = new MySqlConnection(ConnectionString);
+            //ConnectionString = ConfigurationManager.ConnectionStrings["WorldAtWarConnectionString"].ConnectionString;
+            //SqlConnection = new MySqlConnection(ConnectionString);
+        }
+
+        public string GetUserIPAddress()
+        {
+            string IP = System.Web.HttpContext.Current.Request.UserHostAddress;
+
+            if (IP == "::1")
+            {
+                IP = "127.0.0.1";
+            }
+
+            return IP;
         }
 
         public int PostData(ServerData data)
         {
             try
             {
-                SqlConnection.Open();
+                // delete any lobbies with this IP address before adding a new one
+                SqlCommand deleteCommand = new SqlCommand("dbo.DeleteServerEntry");
+                deleteCommand.CommandType = CommandType.StoredProcedure;
+                deleteCommand.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
 
-                MySqlCommand command = new MySqlCommand("AddServerEntry", SqlConnection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                Database.BaseNonQuery(deleteCommand);
 
                 // generate a random ID for the server
                 Random random = new Random();
                 int serverId = random.Next(1, int.MaxValue);
 
-                command.Parameters.AddWithValue("_ServerID", serverId);
-                command.Parameters.AddWithValue("_IPAddress", data.IPAddress);
-                command.Parameters.AddWithValue("_ServerName", data.ServerName);
-                command.Parameters.AddWithValue("_MapName", data.MapName);
-                command.Parameters.AddWithValue("_CurrentPlayers", data.CurrentPlayers);
-                command.Parameters.AddWithValue("_MaxPlayers", data.MaxPlayers);
+                SqlCommand command = new SqlCommand("dbo.AddServerEntry");
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("ServerID", serverId);
+                command.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
+                command.Parameters.AddWithValue("ServerName", data.ServerName);
+                command.Parameters.AddWithValue("MapName", data.MapName);
+                command.Parameters.AddWithValue("CurrentPlayers", data.CurrentPlayers);
+                command.Parameters.AddWithValue("MaxPlayers", data.MaxPlayers);
 
-                command.ExecuteNonQuery();
-
-                SqlConnection.Close();
+                bool entered = Database.BaseNonQuery(command);
 
                 return serverId;
             }
@@ -50,24 +67,37 @@ namespace ZombiesMasterServer.Models
             }
         }
 
-        public void DeleteData(int serverId)
+        public void DeleteData()
         {
             try
             {
-                SqlConnection.Open();
+                SqlCommand command = new SqlCommand("dbo.DeleteServerEntry");
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
 
-                MySqlCommand command = new MySqlCommand("DeleteServerEntry", SqlConnection);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("_ServerID", serverId);
-
-                command.ExecuteNonQuery();
-
-                SqlConnection.Close();
+                Database.BaseNonQuery(command);
             }
             catch (Exception ex)
             {
 
+            }
+        }
+
+        public DataTable GetAllServers()
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("dbo.GetAllServerEntries");
+                command.CommandType = CommandType.StoredProcedure;
+
+                DataTable servers = Database.BaseDataQuery(command);
+                servers.TableName = "Servers";
+
+                return servers;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }

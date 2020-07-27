@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Http.h"
+
 #include "ZombieGameInstanceBase.generated.h"
 
 USTRUCT(BlueprintType)
@@ -22,6 +24,8 @@ public:
     class UTexture2D* MapImage;
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FServersReceived);
+
 UCLASS()
 class ZOMBIESCLONE_API UZombieGameInstanceBase : public UGameInstance
 {
@@ -29,6 +33,17 @@ class ZOMBIESCLONE_API UZombieGameInstanceBase : public UGameInstance
 
 public:
     UZombieGameInstanceBase();
+
+protected:
+    FHttpModule* Http;
+
+    UPROPERTY(BlueprintAssignable)
+    FServersReceived FOnServersReceived;
+
+    UFUNCTION(BlueprintCallable)
+    void GetServerList();
+
+    void OnServerListRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
 protected:
     UFUNCTION(BlueprintCallable)

@@ -56,7 +56,7 @@ void AZombieBeaconHostObject::InitialLobbyHandling()
     // construct json object to send to the server
     TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
     JsonObject->SetNumberField("ServerID", 0);
-    JsonObject->SetStringField("IPAddress", "127.0.0.1");
+    JsonObject->SetStringField("IPAddress", "26153176253");
     JsonObject->SetStringField("ServerName", "Test Server Name");
     JsonObject->SetStringField("MapName", "Test Map Name");
     JsonObject->SetNumberField("CurrentPlayers", 1);
@@ -71,7 +71,7 @@ void AZombieBeaconHostObject::InitialLobbyHandling()
 
     Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
 
-    Request->SetURL("https://localhost:44386/api/Host");
+    Request->SetURL("https://waw-master-server.azurewebsites.net/api/Host");
     Request->SetVerb("POST");
     Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -153,7 +153,7 @@ void AZombieBeaconHostObject::ShutdownServer()
         // delete the server entry on the Master Server
         TSharedRef<IHttpRequest> Request = Http->CreateRequest();
 
-        Request->SetURL("https://localhost:44386/api/Host/" + FString::FromInt(ServerID));
+        Request->SetURL("https://waw-master-server.azurewebsites.net/api/Host/" + FString::FromInt(ServerID));
         Request->SetVerb("DELETE");
         Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 

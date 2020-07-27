@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,9 +12,10 @@ namespace ZombiesMasterServer.Controllers
     public class HostController : ApiController
     {
         // GET: api/Host
-        public IEnumerable<string> Get()
+        public DataTable Get()
         {
-            return new string[] { "value1", "value2" };
+            DatabaseInterface DB = new DatabaseInterface();
+            return DB.GetAllServers();
         }
 
         // GET: api/Host/5
@@ -38,7 +40,7 @@ namespace ZombiesMasterServer.Controllers
         public void Delete(int id)
         {
             DatabaseInterface DB = new DatabaseInterface();
-            DB.DeleteData(id);
+            DB.DeleteData();
         }
     }
 }
