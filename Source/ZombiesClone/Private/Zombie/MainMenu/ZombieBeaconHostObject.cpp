@@ -71,7 +71,7 @@ void AZombieBeaconHostObject::InitialLobbyHandling()
 
     Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
 
-    Request->SetURL("https://waw-master-server.azurewebsites.net/api/Host");
+    Request->SetURL("https://localhost:44386/api/Host");
     Request->SetVerb("POST");
     Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -153,7 +153,7 @@ void AZombieBeaconHostObject::ShutdownServer()
         // delete the server entry on the Master Server
         TSharedRef<IHttpRequest> Request = Http->CreateRequest();
 
-        Request->SetURL("https://waw-master-server.azurewebsites.net/api/Host/" + FString::FromInt(ServerID));
+        Request->SetURL("https://localhost:44386/api/Host/" + FString::FromInt(ServerID));
         Request->SetVerb("DELETE");
         Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 

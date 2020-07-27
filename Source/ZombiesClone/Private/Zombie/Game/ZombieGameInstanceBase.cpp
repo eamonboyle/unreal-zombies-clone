@@ -21,7 +21,7 @@ void UZombieGameInstanceBase::GenerateServerList()
 
     Request->OnProcessRequestComplete().BindUObject(this, &UZombieGameInstanceBase::OnServerListRequestComplete);
 
-    Request->SetURL("https://waw-master-server.azurewebsites.net/api/Host");
+    Request->SetURL("https://localhost:44386/api/Host");
     Request->SetVerb("GET");
     Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
@@ -45,6 +45,11 @@ void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Reques
         {
             TArray<TSharedPtr<FJsonValue>> JsonValues = JsonObject->GetArrayField(TEXT("Response"));
 
+            if (JsonValues.Num() > 0)
+            {
+                ServerList.Empty();
+            }
+
             for (TSharedPtr<FJsonValue> Value : JsonValues)
             {
                 FServerData ServerData = FServerData();
@@ -57,17 +62,6 @@ void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Reques
             }
 
             FOnServersReceived.Broadcast();
-
-            // for (FServerData ServerData : ServerList)
-            // {
-            //     UE_LOG(LogTemp, Warning, TEXT("ServerID: %d"), ServerData.ServerID);
-            //     UE_LOG(LogTemp, Warning, TEXT("IP: %s"), *ServerData.IPAddress);
-            //     UE_LOG(LogTemp, Warning, TEXT("ServerName: %s"), *ServerData.ServerName);
-            //     UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *ServerData.MapName);
-            //     UE_LOG(LogTemp, Warning, TEXT("CurrentPlayers: %d"), ServerData.CurrentPlayers);
-            //     UE_LOG(LogTemp, Warning, TEXT("MaxPlayers: %d"), ServerData.MaxPlayers);
-            //     UE_LOG(LogTemp, Warning, TEXT("----------------------------------------"));
-            // }
         }
     }
     else
