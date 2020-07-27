@@ -10,7 +10,12 @@ UZombieGameInstanceBase::UZombieGameInstanceBase()
     Http = &FHttpModule::Get();
 }
 
-void UZombieGameInstanceBase::GetServerList()
+TArray<FServerData>& UZombieGameInstanceBase::GetServerList()
+{
+    return ServerList;
+}
+
+void UZombieGameInstanceBase::GenerateServerList()
 {
     TSharedRef<IHttpRequest> Request = Http->CreateRequest();
 
@@ -26,6 +31,7 @@ void UZombieGameInstanceBase::GetServerList()
 void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response,
                                                           bool Success)
 {
+    // retrieves the server data objects from the json response and then broadcasts
     if (Success)
     {
         FString ResponseStr = Response->GetContentAsString();
@@ -38,7 +44,6 @@ void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Reques
         if (FJsonSerializer::Deserialize(JsonReader, JsonObject) && JsonObject.IsValid())
         {
             TArray<TSharedPtr<FJsonValue>> JsonValues = JsonObject->GetArrayField(TEXT("Response"));
-            TArray<FServerData> ServerList;
 
             for (TSharedPtr<FJsonValue> Value : JsonValues)
             {
@@ -51,16 +56,18 @@ void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Reques
                 }
             }
 
-            for (FServerData ServerData : ServerList)
-            {
-                UE_LOG(LogTemp, Warning, TEXT("ServerID: %d"), ServerData.ServerID);
-                UE_LOG(LogTemp, Warning, TEXT("IP: %s"), *ServerData.IPAddress);
-                UE_LOG(LogTemp, Warning, TEXT("ServerName: %s"), *ServerData.ServerName);
-                UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *ServerData.MapName);
-                UE_LOG(LogTemp, Warning, TEXT("CurrentPlayers: %d"), ServerData.CurrentPlayers);
-                UE_LOG(LogTemp, Warning, TEXT("MaxPlayers: %d"), ServerData.MaxPlayers);
-                UE_LOG(LogTemp, Warning, TEXT("----------------------------------------"));
-            }
+            FOnServersReceived.Broadcast();
+
+            // for (FServerData ServerData : ServerList)
+            // {
+            //     UE_LOG(LogTemp, Warning, TEXT("ServerID: %d"), ServerData.ServerID);
+            //     UE_LOG(LogTemp, Warning, TEXT("IP: %s"), *ServerData.IPAddress);
+            //     UE_LOG(LogTemp, Warning, TEXT("ServerName: %s"), *ServerData.ServerName);
+            //     UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *ServerData.MapName);
+            //     UE_LOG(LogTemp, Warning, TEXT("CurrentPlayers: %d"), ServerData.CurrentPlayers);
+            //     UE_LOG(LogTemp, Warning, TEXT("MaxPlayers: %d"), ServerData.MaxPlayers);
+            //     UE_LOG(LogTemp, Warning, TEXT("----------------------------------------"));
+            // }
         }
     }
     else

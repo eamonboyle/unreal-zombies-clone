@@ -56,12 +56,17 @@ public:
 
 protected:
     FHttpModule* Http;
+    
+    TArray<FServerData> ServerList;
+
+    UFUNCTION(BlueprintCallable)
+    TArray<FServerData>& GetServerList();
 
     UPROPERTY(BlueprintAssignable)
     FServersReceived FOnServersReceived;
 
     UFUNCTION(BlueprintCallable)
-    void GetServerList();
+    void GenerateServerList();
 
     void OnServerListRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
