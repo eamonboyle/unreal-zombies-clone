@@ -45,7 +45,8 @@ void AZombieBeaconHostObject::BeginPlay()
     // set the host as the first player in the player list
     LobbyInfo.PlayerList.Add(FString("Host Player"));
 
-    GetWorld()->GetTimerManager().SetTimer(TInitialLobbyHandle, this, &AZombieBeaconHostObject::InitialLobbyHandling, 0.2f, false);
+    GetWorld()->GetTimerManager().SetTimer(TInitialLobbyHandle, this, &AZombieBeaconHostObject::InitialLobbyHandling,
+                                           0.2f, false);
 }
 
 void AZombieBeaconHostObject::InitialLobbyHandling()
@@ -69,11 +70,11 @@ void AZombieBeaconHostObject::InitialLobbyHandling()
     TSharedRef<IHttpRequest> Request = Http->CreateRequest();
 
     Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
-    
+
     Request->SetURL("https://localhost:44386/api/Host");
     Request->SetVerb("POST");
     Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-    
+
     Request->SetContentAsString(JsonString);
 
     Request->ProcessRequest();
@@ -109,7 +110,7 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
             Client->SetPlayerIndex(Index);
             Client->SetPlayerName(PlayerName);
         }
-        
+
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
         UpdateClientLobbyInfo();
     }
@@ -124,7 +125,7 @@ void AZombieBeaconHostObject::NotifyClientDisconnected(AOnlineBeaconClient* Leav
     Super::NotifyClientDisconnected(LeavingClientActor);
 
     UE_LOG(LogTemp, Warning, TEXT("Client has disconnected"));
-    
+
     if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(LeavingClientActor))
     {
         uint8 Index = Client->GetPlayerIndex();
@@ -147,8 +148,17 @@ void AZombieBeaconHostObject::ShutdownServer()
         Host->DestroyBeacon();
     }
 
-    // delete the server entry on the Master Server
-    
+    if (ServerID != -1)
+    {
+        // delete the server entry on the Master Server
+        TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+
+        Request->SetURL("https://localhost:44386/api/Host/" + FString::FromInt(ServerID));
+        Request->SetVerb("DELETE");
+        Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+        Request->ProcessRequest();
+    }
 }
 
 void AZombieBeaconHostObject::DisconnectAllClients()
@@ -183,7 +193,7 @@ void AZombieBeaconHostObject::DisconnectClient(AOnlineBeaconClient* ClientActor)
 void AZombieBeaconHostObject::SendChatToLobby(const FText& ChatMessage)
 {
     FOnHostChatReceived.Broadcast(ChatMessage);
-    
+
     for (AOnlineBeaconClient* ClientBeacon : ClientActors)
     {
         if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(ClientBeacon))
