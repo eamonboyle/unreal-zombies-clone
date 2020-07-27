@@ -23,10 +23,10 @@ namespace ZombiesMasterServer.Controllers
         }
 
         // POST: api/Host
-        public void Post(ServerData data)
+        public int Post(ServerData data)
         {
             DatabaseInterface DB = new DatabaseInterface();
-            DB.PostData(data);
+            return DB.PostData(data);
         }
 
         // PUT: api/Host/5

@@ -26,7 +26,12 @@ namespace ZombiesMasterServer.Models
 
                 MySqlCommand command = new MySqlCommand("AddServerEntry", SqlConnection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("_ServerID", data.ServerID);
+
+                // generate a random ID for the server
+                Random random = new Random();
+                int serverId = random.Next(1, int.MaxValue);
+
+                command.Parameters.AddWithValue("_ServerID", serverId);
                 command.Parameters.AddWithValue("_IPAddress", data.IPAddress);
                 command.Parameters.AddWithValue("_ServerName", data.ServerName);
                 command.Parameters.AddWithValue("_MapName", data.MapName);
@@ -37,7 +42,7 @@ namespace ZombiesMasterServer.Models
 
                 SqlConnection.Close();
 
-                return 999;
+                return serverId;
             }
             catch (Exception ex)
             {
