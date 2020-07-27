@@ -38,7 +38,7 @@ namespace ZombiesMasterServer.Models
             try
             {
                 // delete any lobbies with this IP address before adding a new one
-                SqlCommand deleteCommand = new SqlCommand("dbo.DeleteServerEntry");
+                SqlCommand deleteCommand = new SqlCommand("[dbo].[DeleteServerEntry]");
                 deleteCommand.CommandType = CommandType.StoredProcedure;
                 deleteCommand.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
 
@@ -48,7 +48,7 @@ namespace ZombiesMasterServer.Models
                 Random random = new Random();
                 int serverId = random.Next(1, int.MaxValue);
 
-                SqlCommand command = new SqlCommand("dbo.AddServerEntry");
+                SqlCommand command = new SqlCommand("AddServerEntry");
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("ServerID", serverId);
                 command.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
@@ -71,7 +71,7 @@ namespace ZombiesMasterServer.Models
         {
             try
             {
-                SqlCommand command = new SqlCommand("dbo.DeleteServerEntry");
+                SqlCommand command = new SqlCommand("DeleteServerEntry");
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
 
@@ -87,7 +87,7 @@ namespace ZombiesMasterServer.Models
         {
             try
             {
-                SqlCommand command = new SqlCommand("dbo.GetAllServerEntries");
+                SqlCommand command = new SqlCommand("GetAllServerEntries");
                 command.CommandType = CommandType.StoredProcedure;
 
                 DataTable servers = Database.BaseDataQuery(command);
