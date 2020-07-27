@@ -6,6 +6,7 @@
 #include "ZombiesClone/Public/Zombie/MainMenu/ZombieMainMenuGameMode.h"
 
 #include "OnlineBeaconHost.h"
+#include "TimerManager.h"
 
 AZombieBeaconHostObject::AZombieBeaconHostObject()
 {
@@ -40,6 +41,13 @@ void AZombieBeaconHostObject::BeginPlay()
 
     // set the host as the first player in the player list
     LobbyInfo.PlayerList.Add(FString("Host Player"));
+
+    GetWorld()->GetTimerManager().SetTimer(TInitialLobbyHandle, this, &AZombieBeaconHostObject::InitialLobbyHandling, 0.2f, false);
+}
+
+void AZombieBeaconHostObject::InitialLobbyHandling()
+{
+    UpdateLobbyInfo(LobbyInfo);
 }
 
 void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientActor, UNetConnection* ClientConnection)
@@ -56,6 +64,7 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
         if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(NewClientActor))
         {
             Client->SetPlayerIndex(Index);
+            Client->SetPlayerName(PlayerName);
         }
         
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));

@@ -36,6 +36,7 @@ protected:
     FChatReceived FOnChatReceived;
 
     uint8 PlayerIndex;
+    FString PlayerName;
 
 protected:
     UFUNCTION(BlueprintCallable)
@@ -70,6 +71,8 @@ public:
     virtual void Client_OnChatMessageReceived_Implementation(const FText& ChatMessage);
 
     void SetPlayerIndex(uint8 Index);
-
     uint8 GetPlayerIndex();
+
+    void SetPlayerName(const FString& NewPlayerName);
+    FString GetPlayerName();
 };

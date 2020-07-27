@@ -40,11 +40,11 @@ bool AZombieBeaconClient::Server_SendChatMessage_Validate(const FText& ChatMessa
 
 void AZombieBeaconClient::Server_SendChatMessage_Implementation(const FText& ChatMessage)
 {
-    UE_LOG(LogTemp, Warning ,TEXT("Chat: %s"), *ChatMessage.ToString());
+    FString Message = PlayerName + ": " + ChatMessage.ToString();
 
     if (AZombieBeaconHostObject* Host = Cast<AZombieBeaconHostObject>(BeaconOwner))
     {
-        Host->SendChatToLobby(ChatMessage);
+        Host->SendChatToLobby(FText::FromString(Message));
     }
 }
 
@@ -72,6 +72,16 @@ void AZombieBeaconClient::SetPlayerIndex(uint8 Index)
 uint8 AZombieBeaconClient::GetPlayerIndex()
 {
     return PlayerIndex;
+}
+
+void AZombieBeaconClient::SetPlayerName(const FString& NewPlayerName)
+{
+    PlayerName = NewPlayerName;
+}
+
+FString AZombieBeaconClient::GetPlayerName()
+{
+    return PlayerName;
 }
 
 void AZombieBeaconClient::LeaveLobby()
