@@ -10,8 +10,6 @@ namespace ZombiesMasterServer.Controllers
 {
     public class ValuesController : ApiController
     {
-        ServerData Data = new ServerData();
-
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -21,6 +19,9 @@ namespace ZombiesMasterServer.Controllers
         // GET api/values/5
         public ServerData Get(int id)
         {
+            ServerData Data = new ServerData();
+            Data.Test();
+
             return Data;
         }
 
