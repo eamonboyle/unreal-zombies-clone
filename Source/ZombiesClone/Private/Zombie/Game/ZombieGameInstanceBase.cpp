@@ -3,6 +3,7 @@
 
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h"
 #include "Engine/World.h"
+#include "JsonUtilities/Public/JsonObjectConverter.h"
 
 UZombieGameInstanceBase::UZombieGameInstanceBase()
 {
@@ -27,7 +28,40 @@ void UZombieGameInstanceBase::OnServerListRequestComplete(FHttpRequestPtr Reques
 {
     if (Success)
     {
-        UE_LOG(LogTemp, Warning, TEXT("ServerListRequest SUCCESS: %s"), *Response->GetContentAsString());
+        FString ResponseStr = Response->GetContentAsString();
+        ResponseStr.InsertAt(0, FString("{\"Response\":"));
+        ResponseStr.AppendChar('}');
+
+        TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+        TSharedRef<TJsonReader<>> JsonReader = TJsonReaderFactory<TCHAR>::Create(ResponseStr);
+
+        if (FJsonSerializer::Deserialize(JsonReader, JsonObject) && JsonObject.IsValid())
+        {
+            TArray<TSharedPtr<FJsonValue>> JsonValues = JsonObject->GetArrayField(TEXT("Response"));
+            TArray<FServerData> ServerList;
+
+            for (TSharedPtr<FJsonValue> Value : JsonValues)
+            {
+                FServerData ServerData = FServerData();
+                TSharedPtr<FJsonObject> JsonObj = Value->AsObject();
+
+                if (FJsonObjectConverter::JsonObjectToUStruct(JsonObj.ToSharedRef(), &ServerData, 0, 0))
+                {
+                    ServerList.Add(ServerData);
+                }
+            }
+
+            for (FServerData ServerData : ServerList)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("ServerID: %d"), ServerData.ServerID);
+                UE_LOG(LogTemp, Warning, TEXT("IP: %s"), *ServerData.IPAddress);
+                UE_LOG(LogTemp, Warning, TEXT("ServerName: %s"), *ServerData.ServerName);
+                UE_LOG(LogTemp, Warning, TEXT("MapName: %s"), *ServerData.MapName);
+                UE_LOG(LogTemp, Warning, TEXT("CurrentPlayers: %d"), ServerData.CurrentPlayers);
+                UE_LOG(LogTemp, Warning, TEXT("MaxPlayers: %d"), ServerData.MaxPlayers);
+                UE_LOG(LogTemp, Warning, TEXT("----------------------------------------"));
+            }
+        }
     }
     else
     {
