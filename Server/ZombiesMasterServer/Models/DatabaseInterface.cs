@@ -49,5 +49,26 @@ namespace ZombiesMasterServer.Models
                 return -1;
             }
         }
+
+        public void DeleteData(int serverId)
+        {
+            try
+            {
+                SqlConnection.Open();
+
+                MySqlCommand command = new MySqlCommand("DeleteServerEntry", SqlConnection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("_ServerID", serverId);
+
+                command.ExecuteNonQuery();
+
+                SqlConnection.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

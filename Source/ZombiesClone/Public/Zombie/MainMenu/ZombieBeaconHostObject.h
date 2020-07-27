@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "OnlineBeaconHostObject.h"
+#include "Http.h"
+
 #include "ZombieBeaconHostObject.generated.h"
 
 USTRUCT(BlueprintType)
@@ -33,6 +35,12 @@ class ZOMBIESCLONE_API AZombieBeaconHostObject : public AOnlineBeaconHostObject
 
 public:
     AZombieBeaconHostObject();
+
+protected:
+    FHttpModule* Http;
+    int ServerID;
+
+    void OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
 protected:
     FZombieLobbyInfo LobbyInfo;

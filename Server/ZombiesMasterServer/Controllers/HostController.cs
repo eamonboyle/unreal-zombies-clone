@@ -37,6 +37,8 @@ namespace ZombiesMasterServer.Controllers
         // DELETE: api/Host/5
         public void Delete(int id)
         {
+            DatabaseInterface DB = new DatabaseInterface();
+            DB.DeleteData(id);
         }
     }
 }
