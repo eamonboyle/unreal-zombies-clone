@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ZombiesMasterServer.Models;
 
 namespace ZombiesMasterServer.Controllers
 {
     public class ValuesController : ApiController
     {
+        ServerData Data = new ServerData();
+
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -16,9 +19,9 @@ namespace ZombiesMasterServer.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public ServerData Get(int id)
         {
-            return "value";
+            return Data;
         }
 
         // POST api/values
