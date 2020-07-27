@@ -24,6 +24,8 @@ public:
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHostLobbyUpdated, FZombieLobbyInfo, FOnHostLobbyUpdated);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHostChatReceived, const FText&, FOnHostChatReceived);
+
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconHostObject : public AOnlineBeaconHostObject
 {
@@ -37,6 +39,9 @@ protected:
 
     UPROPERTY(BlueprintAssignable)
     FHostLobbyUpdated FOnHostLobbyUpdated;
+
+    UPROPERTY(BlueprintAssignable)
+    FHostChatReceived FOnHostChatReceived;
 
     UFUNCTION(BlueprintCallable)
     void UpdateLobbyInfo(FZombieLobbyInfo NewLobbyInfo);
@@ -55,4 +60,8 @@ protected:
     void DisconnectAllClients();
 
     virtual void DisconnectClient(AOnlineBeaconClient* ClientActor) override;
+
+public:
+    UFUNCTION(BlueprintCallable)
+    void SendChatToLobby(const FText& ChatMessage);
 };

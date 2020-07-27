@@ -12,6 +12,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDisconnected);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FLobbyUpdated, FZombieLobbyInfo, FOnLobbyUpdated);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FChatReceived, const FText&, FOnChatReceived);
+
 UCLASS()
 class ZOMBIESCLONE_API AZombieBeaconClient : public AOnlineBeaconClient
 {
@@ -30,6 +32,9 @@ protected:
     UPROPERTY(BlueprintAssignable)
     FLobbyUpdated FOnLobbyUpdated;
 
+    UPROPERTY(BlueprintAssignable)
+    FChatReceived FOnChatReceived;
+
     uint8 PlayerIndex;
 
 protected:
@@ -42,6 +47,15 @@ protected:
     virtual void OnConnected() override;
     virtual void OnFailure() override;
 
+protected:
+    UFUNCTION(BlueprintCallable)
+    void SendChatMessage(const FText& ChatMessage);
+
+    UFUNCTION(Server, Reliable, WithValidation)
+    void Server_SendChatMessage(const FText& ChatMessage);
+    bool Server_SendChatMessage_Validate(const FText& ChatMessage);
+    void Server_SendChatMessage_Implementation(const FText& ChatMessage);
+
 public:
     UFUNCTION(Client, Reliable)
     virtual void Client_OnDisconnected();
@@ -50,6 +64,10 @@ public:
     UFUNCTION(Client, Reliable)
     void Client_OnLobbyUpdated(FZombieLobbyInfo LobbyInfo);
     void Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo LobbyInfo);
+    
+    UFUNCTION(Client, Reliable)
+    virtual void Client_OnChatMessageReceived(const FText& ChatMessage);
+    virtual void Client_OnChatMessageReceived_Implementation(const FText& ChatMessage);
 
     void SetPlayerIndex(uint8 Index);
 

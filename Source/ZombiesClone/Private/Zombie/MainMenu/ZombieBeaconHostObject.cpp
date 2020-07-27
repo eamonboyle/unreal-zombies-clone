@@ -124,3 +124,16 @@ void AZombieBeaconHostObject::DisconnectClient(AOnlineBeaconClient* ClientActor)
         BeaconHost->DisconnectClient(ClientActor);
     }
 }
+
+void AZombieBeaconHostObject::SendChatToLobby(const FText& ChatMessage)
+{
+    FOnHostChatReceived.Broadcast(ChatMessage);
+    
+    for (AOnlineBeaconClient* ClientBeacon : ClientActors)
+    {
+        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(ClientBeacon))
+        {
+            Client->Client_OnChatMessageReceived(ChatMessage);
+        }
+    }
+}

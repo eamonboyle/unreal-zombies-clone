@@ -28,6 +28,26 @@ void AZombieBeaconClient::OnFailure()
     FOnConnected.Broadcast(false);
 }
 
+void AZombieBeaconClient::SendChatMessage(const FText& ChatMessage)
+{
+    Server_SendChatMessage(ChatMessage);
+}
+
+bool AZombieBeaconClient::Server_SendChatMessage_Validate(const FText& ChatMessage)
+{
+    return true;
+}
+
+void AZombieBeaconClient::Server_SendChatMessage_Implementation(const FText& ChatMessage)
+{
+    UE_LOG(LogTemp, Warning ,TEXT("Chat: %s"), *ChatMessage.ToString());
+
+    if (AZombieBeaconHostObject* Host = Cast<AZombieBeaconHostObject>(BeaconOwner))
+    {
+        Host->SendChatToLobby(ChatMessage);
+    }
+}
+
 void AZombieBeaconClient::Client_OnDisconnected_Implementation()
 {
     UE_LOG(LogTemp, Warning, TEXT("DISCONNECTED_Implementation"));
@@ -37,6 +57,11 @@ void AZombieBeaconClient::Client_OnDisconnected_Implementation()
 void AZombieBeaconClient::Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo LobbyInfo)
 {
     FOnLobbyUpdated.Broadcast(LobbyInfo);
+}
+
+void AZombieBeaconClient::Client_OnChatMessageReceived_Implementation(const FText& ChatMessage)
+{
+    FOnChatReceived.Broadcast(ChatMessage);
 }
 
 void AZombieBeaconClient::SetPlayerIndex(uint8 Index)
