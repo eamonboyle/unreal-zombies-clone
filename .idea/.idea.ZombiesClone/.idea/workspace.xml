@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ZombiesMasterServer/Controllers/HostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ZombiesMasterServer/Controllers/HostController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/ZombiesMasterServer/Models/DatabaseInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Server/ZombiesMasterServer/Models/DatabaseInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/ZombiesClone.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/ZombiesClone.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -518,7 +516,7 @@
       <workItem from="1595800129245" duration="3177000" />
       <workItem from="1595837788770" duration="8005000" />
       <workItem from="1595863166188" duration="738000" />
-      <workItem from="1595864600195" duration="384000" />
+      <workItem from="1595864600195" duration="682000" />
     </task>
     <servers />
   </component>
