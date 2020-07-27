@@ -8,31 +8,33 @@ using ZombiesMasterServer.Models;
 
 namespace ZombiesMasterServer.Controllers
 {
-    public class ValuesController : ApiController
+    public class HostController : ApiController
     {
-        // GET api/values
+        // GET: api/Host
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
+        // GET: api/Host/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
-        public void Post([FromBody] string value)
+        // POST: api/Host
+        public void Post(ServerData data)
+        {
+            DatabaseInterface DB = new DatabaseInterface();
+            DB.PostData(data);
+        }
+
+        // PUT: api/Host/5
+        public void Put(int id, [FromBody]string value)
         {
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
+        // DELETE: api/Host/5
         public void Delete(int id)
         {
         }
