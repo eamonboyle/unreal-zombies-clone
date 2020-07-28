@@ -142,7 +142,13 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     Super::OnClientConnected(NewClientActor, ClientConnection);
 
     if (NewClientActor)
-    {
+    {        
+        if (GetCurrentPlayerCount() >= ServerData.MaxPlayers)
+        {
+            DisconnectClient(NewClientActor);
+            return;
+        }
+        
         FString PlayerName = FString("Player ");
         uint8 Index = LobbyInfo.PlayerList.Num();
         PlayerName.Append(FString::FromInt(Index));
