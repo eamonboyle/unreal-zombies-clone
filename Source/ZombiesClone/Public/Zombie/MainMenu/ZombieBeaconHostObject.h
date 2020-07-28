@@ -45,6 +45,12 @@ protected:
 protected:
     FZombieLobbyInfo LobbyInfo;
 
+    UFUNCTION(BlueprintCallable)
+    void SetServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers, int MaxPlayers);
+
+    UFUNCTION(BlueprintCallable)
+    int GetCurrentPlayerCount();
+
     UPROPERTY(BlueprintAssignable)
     FHostLobbyUpdated FOnHostLobbyUpdated;
 
