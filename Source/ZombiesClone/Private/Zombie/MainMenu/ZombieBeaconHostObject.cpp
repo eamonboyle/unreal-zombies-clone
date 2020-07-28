@@ -52,32 +52,6 @@ void AZombieBeaconHostObject::BeginPlay()
 void AZombieBeaconHostObject::InitialLobbyHandling()
 {
     UpdateLobbyInfo(LobbyInfo);
-
-    // // construct json object to send to the server
-    // TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-    // JsonObject->SetNumberField("ServerID", 0);
-    // JsonObject->SetStringField("IPAddress", "26153176253");
-    // JsonObject->SetStringField("ServerName", "Test Server Name");
-    // JsonObject->SetStringField("MapName", "Test Map Name");
-    // JsonObject->SetNumberField("CurrentPlayers", 1);
-    // JsonObject->SetNumberField("MaxPlayers", 5);
-    //
-    // FString JsonString;
-    // TSharedRef<TJsonWriter<TCHAR>> JsonWriter = TJsonWriterFactory<>::Create(&JsonString);
-    //
-    // FJsonSerializer::Serialize(JsonObject.ToSharedRef(), JsonWriter);
-    //
-    // TSharedRef<IHttpRequest> Request = Http->CreateRequest();
-    //
-    // Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
-    //
-    // Request->SetURL("https://localhost:44386/api/Host");
-    // Request->SetVerb("POST");
-    // Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-    //
-    // Request->SetContentAsString(JsonString);
-    //
-    // Request->ProcessRequest();
 }
 
 void AZombieBeaconHostObject::OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success)
@@ -96,8 +70,6 @@ void AZombieBeaconHostObject::OnProcessRequestComplete(FHttpRequestPtr Request, 
 void AZombieBeaconHostObject::SetServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers,
     int MaxPlayers)
 {
-    UE_LOG(LogTemp, Warning, TEXT("SET SERVER DATA: Name: %s, MapName: %s, CurrentPlayers: %d, MaxPlayers: %d"), *ServerName, *MapName, CurrentPlayers, MaxPlayers);
-    
     // construct json object to send to the server
     TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
     JsonObject->SetNumberField("ServerID", 0);
@@ -118,6 +90,36 @@ void AZombieBeaconHostObject::SetServerData(const FString& ServerName, const FSt
 
     Request->SetURL("https://localhost:44386/api/Host");
     Request->SetVerb("POST");
+    Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+    Request->SetContentAsString(JsonString);
+
+    Request->ProcessRequest();
+}
+
+void AZombieBeaconHostObject::UpdateServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers,
+    int MaxPlayers)
+{
+    // construct json object to send to the server
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+    JsonObject->SetNumberField("ServerID", 0);
+    JsonObject->SetStringField("IPAddress", "26153176253");
+    JsonObject->SetStringField("ServerName", ServerName);
+    JsonObject->SetStringField("MapName", MapName);
+    JsonObject->SetNumberField("CurrentPlayers", CurrentPlayers);
+    JsonObject->SetNumberField("MaxPlayers", MaxPlayers);
+
+    FString JsonString;
+    TSharedRef<TJsonWriter<TCHAR>> JsonWriter = TJsonWriterFactory<>::Create(&JsonString);
+
+    FJsonSerializer::Serialize(JsonObject.ToSharedRef(), JsonWriter);
+
+    TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+
+    Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
+
+    Request->SetURL("https://localhost:44386/api/Host");
+    Request->SetVerb("PUT");
     Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
     Request->SetContentAsString(JsonString);

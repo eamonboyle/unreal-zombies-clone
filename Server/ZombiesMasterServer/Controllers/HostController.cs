@@ -32,8 +32,10 @@ namespace ZombiesMasterServer.Controllers
         }
 
         // PUT: api/Host/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(ServerData data)
         {
+            DatabaseInterface DB = new DatabaseInterface();
+            DB.UpdateServerEntry(data);
         }
 
         // DELETE: api/Host/5

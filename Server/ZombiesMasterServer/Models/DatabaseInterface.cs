@@ -83,6 +83,26 @@ namespace ZombiesMasterServer.Models
             }
         }
 
+        public bool UpdateServerEntry(ServerData data)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand("UpdateServerEntry");
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("IPAddress", GetUserIPAddress());
+                command.Parameters.AddWithValue("ServerName", data.ServerName);
+                command.Parameters.AddWithValue("MapName", data.MapName);
+                command.Parameters.AddWithValue("CurrentPlayers", data.CurrentPlayers);
+                command.Parameters.AddWithValue("MaxPlayers", data.MaxPlayers);
+
+                return Database.BaseNonQuery(command);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public DataTable GetAllServers()
         {
             try

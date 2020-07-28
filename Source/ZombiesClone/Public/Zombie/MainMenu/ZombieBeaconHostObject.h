@@ -49,6 +49,9 @@ protected:
     void SetServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers, int MaxPlayers);
 
     UFUNCTION(BlueprintCallable)
+    void UpdateServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers, int MaxPlayers);
+
+    UFUNCTION(BlueprintCallable)
     int GetCurrentPlayerCount();
 
     UPROPERTY(BlueprintAssignable)
