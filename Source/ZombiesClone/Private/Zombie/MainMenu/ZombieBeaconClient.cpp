@@ -33,6 +33,16 @@ void AZombieBeaconClient::SendChatMessage(const FText& ChatMessage)
     Server_SendChatMessage(ChatMessage);
 }
 
+void AZombieBeaconClient::FullConnectToServer(const FString& JoinAddress)
+{
+    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    {
+        PC->ClientTravel(JoinAddress, ETravelType::TRAVEL_Absolute);
+    }
+
+    LeaveLobby();
+}
+
 bool AZombieBeaconClient::Server_SendChatMessage_Validate(const FText& ChatMessage)
 {
     return true;
@@ -62,6 +72,11 @@ void AZombieBeaconClient::Client_OnLobbyUpdated_Implementation(FZombieLobbyInfo 
 void AZombieBeaconClient::Client_OnChatMessageReceived_Implementation(const FText& ChatMessage)
 {
     FOnChatReceived.Broadcast(ChatMessage);
+}
+
+void AZombieBeaconClient::Client_FullConnect_Implementation()
+{
+    FOnFullConnect.Broadcast();
 }
 
 void AZombieBeaconClient::SetPlayerIndex(uint8 Index)

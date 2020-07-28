@@ -84,6 +84,9 @@ protected:
 
     virtual void DisconnectClient(AOnlineBeaconClient* ClientActor) override;
 
+    UFUNCTION(BlueprintCallable)
+    void StartServer(const FString& MapURL);
+
 public:
     UFUNCTION(BlueprintCallable)
     void SendChatToLobby(const FText& ChatMessage);

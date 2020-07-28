@@ -142,7 +142,7 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     Super::OnClientConnected(NewClientActor, ClientConnection);
 
     if (NewClientActor)
-    {        
+    {
         if (GetCurrentPlayerCount() >= ServerData.MaxPlayers)
         {
             if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(NewClientActor))
@@ -152,7 +152,7 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
                 return;
             }
         }
-        
+
         FString PlayerName = FString("Player ");
         uint8 Index = LobbyInfo.PlayerList.Num();
         PlayerName.Append(FString::FromInt(Index));
@@ -189,7 +189,7 @@ void AZombieBeaconHostObject::NotifyClientDisconnected(AOnlineBeaconClient* Leav
         {
             return;
         }
-        
+
         LobbyInfo.PlayerList.RemoveAt(Index);
     }
 
@@ -250,6 +250,21 @@ void AZombieBeaconHostObject::DisconnectClient(AOnlineBeaconClient* ClientActor)
 
         BeaconHost->DisconnectClient(ClientActor);
     }
+}
+
+void AZombieBeaconHostObject::StartServer(const FString& MapURL)
+{
+    for (AOnlineBeaconClient* ClientBeacon : ClientActors)
+    {
+        if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(ClientBeacon))
+        {
+            Client->Client_FullConnect();
+        }
+    }
+
+    ShutdownServer();
+
+    GetWorld()->ServerTravel(MapURL + "?listen");
 }
 
 void AZombieBeaconHostObject::SendChatToLobby(const FText& ChatMessage)
