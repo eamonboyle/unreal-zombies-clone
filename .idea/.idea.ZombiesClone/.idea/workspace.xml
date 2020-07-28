@@ -20,12 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombiePlayerSpawnPoint.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombiePlayerSpawnPoint.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zombies-Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZombiesClone.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/MainMenu/W_MainMenu.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/riderModule.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,20 +40,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ApplicationCore/Private/Mac/MacPlatformSplash.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/Runtime/Steam/SteamSockets/Source/SteamSockets/Private/SteamSocket.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombiePlayerSpawnPoint.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombiePlayerSpawnPoint.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/ZombiesClone.Build.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Developer/GraphColor/Private/listcoll.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/JsonUtilities/Private/JsonObjectConverter.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/Runtime/Steam/SteamSockets/Source/SteamSockets/Private/SteamSocket.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/ZombiesClone.Build.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/ZombiesCloneGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ApplicationCore/Private/Mac/MacCursor.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ImageWrapper/Private/Formats/IcnsImageWrapper.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/NetcodeUnitTest/NetcodeUnitTest/Source/NetcodeUnitTest/Classes/ClientUnitTest.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Developer/GraphColor/Private/listcoll.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/JsonUtilities/Private/JsonObjectConverter.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Player/CharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UE4Editor/Inc/ZombiesClone/ZombieBeaconClient.gen.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/Online/OnlineSubsystemUtils/Source/OnlineSubsystemUtils/Public/OnlineBeaconHost.h" root0="FORCE_HIGHLIGHTING" />
@@ -76,8 +83,10 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconClient.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconClient.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombiePlayerSpawnPoint.cpp" />
       </list>
     </option>
   </component>
@@ -526,7 +535,7 @@
       <workItem from="1595863166188" duration="738000" />
       <workItem from="1595864600195" duration="12939000" />
       <workItem from="1595946382147" duration="7744000" />
-      <workItem from="1595971748589" duration="2821000" />
+      <workItem from="1595971748589" duration="4161000" />
     </task>
     <servers />
   </component>

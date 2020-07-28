@@ -29,6 +29,8 @@
             <e p="Zombie" t="Include">
               <e p="Game" t="Include">
                 <e p="ZombieGameInstanceBase.cpp" t="Include" />
+                <e p="ZombieGameMode.cpp" t="Include" />
+                <e p="ZombiePlayerSpawnPoint.cpp" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
                 <e p="ZombieBeaconClient.cpp" t="Include" />
@@ -44,6 +46,8 @@
             <e p="Zombie" t="Include">
               <e p="Game" t="Include">
                 <e p="ZombieGameInstanceBase.h" t="Include" />
+                <e p="ZombieGameMode.h" t="Include" />
+                <e p="ZombiePlayerSpawnPoint.h" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
                 <e p="ZombieBeaconClient.h" t="Include" />
@@ -66,6 +70,8 @@
         <e p="ZombiesCloneEditor.Target.cs" t="Include" />
       </e>
       <e p="Visualizers" t="Include" />
+      <e p="Zombies-Icon.png" t="Include" />
+      <e p="ZombiesClone.png" t="Include" />
       <e p="ZombiesClone.sln" t="IncludeFlat" />
       <e p="ZombiesClone.uproject" t="Include" />
     </e>
@@ -10433,6 +10439,245 @@
             <e p="MagicLeapMath.h" t="Include" />
             <e p="MagicLeapPluginUtil.h" t="Include" />
             <e p="MagicLeapUtil.h" t="Include" />
+          </e>
+        </e>
+      </e>
+    </e>
+    <e p="F:\Epic Games\UE_4.25\Engine\Plugins\Marketplace\PlayFabSDK" t="Include">
+      <e p="PlayFab.uplugin" t="Include" />
+      <e p="Resources" t="Include">
+        <e p="Icon128.png" t="Include" />
+      </e>
+      <e p="Source" t="Include">
+        <e p="PlayFab" t="Include">
+          <e p="Classes" t="Include">
+            <e p="PlayFabAdminAPI.h" t="Include" />
+            <e p="PlayFabAdminModelDecoder.h" t="Include" />
+            <e p="PlayFabAdminModels.h" t="Include" />
+            <e p="PlayFabAuthenticationAPI.h" t="Include" />
+            <e p="PlayFabAuthenticationModelDecoder.h" t="Include" />
+            <e p="PlayFabAuthenticationModels.h" t="Include" />
+            <e p="PlayFabBaseModel.h" t="Include" />
+            <e p="PlayFabClientAPI.h" t="Include" />
+            <e p="PlayFabClientModelDecoder.h" t="Include" />
+            <e p="PlayFabClientModels.h" t="Include" />
+            <e p="PlayFabCloudScriptAPI.h" t="Include" />
+            <e p="PlayFabCloudScriptModelDecoder.h" t="Include" />
+            <e p="PlayFabCloudScriptModels.h" t="Include" />
+            <e p="PlayFabDataAPI.h" t="Include" />
+            <e p="PlayFabDataModelDecoder.h" t="Include" />
+            <e p="PlayFabDataModels.h" t="Include" />
+            <e p="PlayFabEnums.h" t="Include" />
+            <e p="PlayFabEventsAPI.h" t="Include" />
+            <e p="PlayFabEventsModelDecoder.h" t="Include" />
+            <e p="PlayFabEventsModels.h" t="Include" />
+            <e p="PlayFabExperimentationAPI.h" t="Include" />
+            <e p="PlayFabExperimentationModelDecoder.h" t="Include" />
+            <e p="PlayFabExperimentationModels.h" t="Include" />
+            <e p="PlayFabGroupsAPI.h" t="Include" />
+            <e p="PlayFabGroupsModelDecoder.h" t="Include" />
+            <e p="PlayFabGroupsModels.h" t="Include" />
+            <e p="PlayFabInsightsAPI.h" t="Include" />
+            <e p="PlayFabInsightsModelDecoder.h" t="Include" />
+            <e p="PlayFabInsightsModels.h" t="Include" />
+            <e p="PlayFabJsonObject.h" t="Include" />
+            <e p="PlayFabJsonValue.h" t="Include" />
+            <e p="PlayFabLocalizationAPI.h" t="Include" />
+            <e p="PlayFabLocalizationModelDecoder.h" t="Include" />
+            <e p="PlayFabLocalizationModels.h" t="Include" />
+            <e p="PlayFabLoginResultCommon.h" t="Include" />
+            <e p="PlayFabMatchmakerAPI.h" t="Include" />
+            <e p="PlayFabMatchmakerModelDecoder.h" t="Include" />
+            <e p="PlayFabMatchmakerModels.h" t="Include" />
+            <e p="PlayFabMultiplayerAPI.h" t="Include" />
+            <e p="PlayFabMultiplayerModelDecoder.h" t="Include" />
+            <e p="PlayFabMultiplayerModels.h" t="Include" />
+            <e p="PlayFabProfilesAPI.h" t="Include" />
+            <e p="PlayFabProfilesModelDecoder.h" t="Include" />
+            <e p="PlayFabProfilesModels.h" t="Include" />
+            <e p="PlayFabRequestCommon.h" t="Include" />
+            <e p="PlayFabResultCommon.h" t="Include" />
+            <e p="PlayFabServerAPI.h" t="Include" />
+            <e p="PlayFabServerModelDecoder.h" t="Include" />
+            <e p="PlayFabServerModels.h" t="Include" />
+            <e p="PlayFabUtilities.h" t="Include" />
+          </e>
+          <e p="PlayFab.Build.cs" t="Include" />
+          <e p="Private" t="Include">
+            <e p="PlayFab.cpp" t="Include" />
+            <e p="PlayFabAdminAPI.cpp" t="Include" />
+            <e p="PlayFabAdminModelDecoder.cpp" t="Include" />
+            <e p="PlayFabAdminModels.cpp" t="Include" />
+            <e p="PlayFabAuthenticationAPI.cpp" t="Include" />
+            <e p="PlayFabAuthenticationModelDecoder.cpp" t="Include" />
+            <e p="PlayFabAuthenticationModels.cpp" t="Include" />
+            <e p="PlayFabBaseModel.cpp" t="Include" />
+            <e p="PlayFabClientAPI.cpp" t="Include" />
+            <e p="PlayFabClientModelDecoder.cpp" t="Include" />
+            <e p="PlayFabClientModels.cpp" t="Include" />
+            <e p="PlayFabCloudScriptAPI.cpp" t="Include" />
+            <e p="PlayFabCloudScriptModelDecoder.cpp" t="Include" />
+            <e p="PlayFabCloudScriptModels.cpp" t="Include" />
+            <e p="PlayFabDataAPI.cpp" t="Include" />
+            <e p="PlayFabDataModelDecoder.cpp" t="Include" />
+            <e p="PlayFabDataModels.cpp" t="Include" />
+            <e p="PlayFabEventsAPI.cpp" t="Include" />
+            <e p="PlayFabEventsModelDecoder.cpp" t="Include" />
+            <e p="PlayFabEventsModels.cpp" t="Include" />
+            <e p="PlayFabExperimentationAPI.cpp" t="Include" />
+            <e p="PlayFabExperimentationModelDecoder.cpp" t="Include" />
+            <e p="PlayFabExperimentationModels.cpp" t="Include" />
+            <e p="PlayFabGroupsAPI.cpp" t="Include" />
+            <e p="PlayFabGroupsModelDecoder.cpp" t="Include" />
+            <e p="PlayFabGroupsModels.cpp" t="Include" />
+            <e p="PlayFabInsightsAPI.cpp" t="Include" />
+            <e p="PlayFabInsightsModelDecoder.cpp" t="Include" />
+            <e p="PlayFabInsightsModels.cpp" t="Include" />
+            <e p="PlayFabJsonObject.cpp" t="Include" />
+            <e p="PlayFabJsonValue.cpp" t="Include" />
+            <e p="PlayFabLocalizationAPI.cpp" t="Include" />
+            <e p="PlayFabLocalizationModelDecoder.cpp" t="Include" />
+            <e p="PlayFabLocalizationModels.cpp" t="Include" />
+            <e p="PlayFabMatchmakerAPI.cpp" t="Include" />
+            <e p="PlayFabMatchmakerModelDecoder.cpp" t="Include" />
+            <e p="PlayFabMatchmakerModels.cpp" t="Include" />
+            <e p="PlayFabMultiplayerAPI.cpp" t="Include" />
+            <e p="PlayFabMultiplayerModelDecoder.cpp" t="Include" />
+            <e p="PlayFabMultiplayerModels.cpp" t="Include" />
+            <e p="PlayFabPrivate.h" t="Include" />
+            <e p="PlayFabProfilesAPI.cpp" t="Include" />
+            <e p="PlayFabProfilesModelDecoder.cpp" t="Include" />
+            <e p="PlayFabProfilesModels.cpp" t="Include" />
+            <e p="PlayFabServerAPI.cpp" t="Include" />
+            <e p="PlayFabServerModelDecoder.cpp" t="Include" />
+            <e p="PlayFabServerModels.cpp" t="Include" />
+            <e p="PlayFabUtilities.cpp" t="Include" />
+          </e>
+          <e p="Public" t="Include">
+            <e p="IPlayFab.h" t="Include" />
+          </e>
+        </e>
+        <e p="PlayFabCommon" t="Include">
+          <e p="PlayFabCommon.Build.cs" t="Include" />
+          <e p="Private" t="Include">
+            <e p="PlayFabCommmonUtils.cpp" t="Include" />
+            <e p="PlayFabCommon.cpp" t="Include" />
+            <e p="PlayFabCommonSettings.cpp" t="Include" />
+            <e p="PlayFabRuntimeSettings.cpp" t="Include" />
+          </e>
+          <e p="Public" t="Include">
+            <e p="PlayFabAuthenticationContext.h" t="Include" />
+            <e p="PlayFabCommon.h" t="Include" />
+            <e p="PlayFabCommonSettings.h" t="Include" />
+            <e p="PlayFabCommonUtils.h" t="Include" />
+            <e p="PlayFabRuntimeSettings.h" t="Include" />
+          </e>
+        </e>
+        <e p="PlayFabCpp" t="Include">
+          <e p="PlayFabCpp.Build.cs" t="Include" />
+          <e p="Private" t="Include">
+            <e p="core" t="Include">
+              <e p="PlayFabAdminAPI.cpp" t="Include" />
+              <e p="PlayFabAdminDataModels.cpp" t="Include" />
+              <e p="PlayFabAdminInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabAuthenticationAPI.cpp" t="Include" />
+              <e p="PlayFabAuthenticationDataModels.cpp" t="Include" />
+              <e p="PlayFabAuthenticationInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabClientAPI.cpp" t="Include" />
+              <e p="PlayFabClientDataModels.cpp" t="Include" />
+              <e p="PlayFabClientInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabCloudScriptAPI.cpp" t="Include" />
+              <e p="PlayFabCloudScriptDataModels.cpp" t="Include" />
+              <e p="PlayFabCloudScriptInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabCppBaseModel.cpp" t="Include" />
+              <e p="PlayFabDataAPI.cpp" t="Include" />
+              <e p="PlayFabDataDataModels.cpp" t="Include" />
+              <e p="PlayFabDataInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabEventsAPI.cpp" t="Include" />
+              <e p="PlayFabEventsDataModels.cpp" t="Include" />
+              <e p="PlayFabEventsInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabExperimentationAPI.cpp" t="Include" />
+              <e p="PlayFabExperimentationDataModels.cpp" t="Include" />
+              <e p="PlayFabExperimentationInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabGroupsAPI.cpp" t="Include" />
+              <e p="PlayFabGroupsDataModels.cpp" t="Include" />
+              <e p="PlayFabGroupsInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabInsightsAPI.cpp" t="Include" />
+              <e p="PlayFabInsightsDataModels.cpp" t="Include" />
+              <e p="PlayFabInsightsInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabJsonHelpers.cpp" t="Include" />
+              <e p="PlayFabLocalizationAPI.cpp" t="Include" />
+              <e p="PlayFabLocalizationDataModels.cpp" t="Include" />
+              <e p="PlayFabLocalizationInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabMatchmakerAPI.cpp" t="Include" />
+              <e p="PlayFabMatchmakerDataModels.cpp" t="Include" />
+              <e p="PlayFabMatchmakerInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabMultiplayerAPI.cpp" t="Include" />
+              <e p="PlayFabMultiplayerDataModels.cpp" t="Include" />
+              <e p="PlayFabMultiplayerInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabProfilesAPI.cpp" t="Include" />
+              <e p="PlayFabProfilesDataModels.cpp" t="Include" />
+              <e p="PlayFabProfilesInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabResultHandler.cpp" t="Include" />
+              <e p="PlayFabServerAPI.cpp" t="Include" />
+              <e p="PlayFabServerDataModels.cpp" t="Include" />
+              <e p="PlayFabServerInstanceAPI.cpp" t="Include" />
+              <e p="PlayFabSettings.cpp" t="Include" />
+            </e>
+            <e p="PlayFab.cpp" t="Include" />
+          </e>
+          <e p="Public" t="Include">
+            <e p="core" t="Include">
+              <e p="PlayFabAdminAPI.h" t="Include" />
+              <e p="PlayFabAdminDataModels.h" t="Include" />
+              <e p="PlayFabAdminInstanceAPI.h" t="Include" />
+              <e p="PlayFabAPISettings.h" t="Include" />
+              <e p="PlayFabAuthenticationAPI.h" t="Include" />
+              <e p="PlayFabAuthenticationDataModels.h" t="Include" />
+              <e p="PlayFabAuthenticationInstanceAPI.h" t="Include" />
+              <e p="PlayFabClientAPI.h" t="Include" />
+              <e p="PlayFabClientDataModels.h" t="Include" />
+              <e p="PlayFabClientInstanceAPI.h" t="Include" />
+              <e p="PlayFabCloudScriptAPI.h" t="Include" />
+              <e p="PlayFabCloudScriptDataModels.h" t="Include" />
+              <e p="PlayFabCloudScriptInstanceAPI.h" t="Include" />
+              <e p="PlayFabCppBaseModel.h" t="Include" />
+              <e p="PlayFabDataAPI.h" t="Include" />
+              <e p="PlayFabDataDataModels.h" t="Include" />
+              <e p="PlayFabDataInstanceAPI.h" t="Include" />
+              <e p="PlayFabError.h" t="Include" />
+              <e p="PlayFabEventsAPI.h" t="Include" />
+              <e p="PlayFabEventsDataModels.h" t="Include" />
+              <e p="PlayFabEventsInstanceAPI.h" t="Include" />
+              <e p="PlayFabExperimentationAPI.h" t="Include" />
+              <e p="PlayFabExperimentationDataModels.h" t="Include" />
+              <e p="PlayFabExperimentationInstanceAPI.h" t="Include" />
+              <e p="PlayFabGroupsAPI.h" t="Include" />
+              <e p="PlayFabGroupsDataModels.h" t="Include" />
+              <e p="PlayFabGroupsInstanceAPI.h" t="Include" />
+              <e p="PlayFabInsightsAPI.h" t="Include" />
+              <e p="PlayFabInsightsDataModels.h" t="Include" />
+              <e p="PlayFabInsightsInstanceAPI.h" t="Include" />
+              <e p="PlayFabJsonHelpers.h" t="Include" />
+              <e p="PlayFabLocalizationAPI.h" t="Include" />
+              <e p="PlayFabLocalizationDataModels.h" t="Include" />
+              <e p="PlayFabLocalizationInstanceAPI.h" t="Include" />
+              <e p="PlayFabMatchmakerAPI.h" t="Include" />
+              <e p="PlayFabMatchmakerDataModels.h" t="Include" />
+              <e p="PlayFabMatchmakerInstanceAPI.h" t="Include" />
+              <e p="PlayFabMultiplayerAPI.h" t="Include" />
+              <e p="PlayFabMultiplayerDataModels.h" t="Include" />
+              <e p="PlayFabMultiplayerInstanceAPI.h" t="Include" />
+              <e p="PlayFabProfilesAPI.h" t="Include" />
+              <e p="PlayFabProfilesDataModels.h" t="Include" />
+              <e p="PlayFabProfilesInstanceAPI.h" t="Include" />
+              <e p="PlayFabResultHandler.h" t="Include" />
+              <e p="PlayFabServerAPI.h" t="Include" />
+              <e p="PlayFabServerDataModels.h" t="Include" />
+              <e p="PlayFabServerInstanceAPI.h" t="Include" />
+              <e p="PlayFabSettings.h" t="Include" />
+            </e>
+            <e p="PlayFab.h" t="Include" />
           </e>
         </e>
       </e>
