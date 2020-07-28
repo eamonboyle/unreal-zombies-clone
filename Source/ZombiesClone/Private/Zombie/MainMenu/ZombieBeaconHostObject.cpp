@@ -145,8 +145,12 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
     {        
         if (GetCurrentPlayerCount() >= ServerData.MaxPlayers)
         {
-            DisconnectClient(NewClientActor);
-            return;
+            if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(NewClientActor))
+            {
+                Client->SetPlayerIndex(240);
+                DisconnectClient(NewClientActor);
+                return;
+            }
         }
         
         FString PlayerName = FString("Player ");
@@ -180,6 +184,12 @@ void AZombieBeaconHostObject::NotifyClientDisconnected(AOnlineBeaconClient* Leav
     if (AZombieBeaconClient* Client = Cast<AZombieBeaconClient>(LeavingClientActor))
     {
         uint8 Index = Client->GetPlayerIndex();
+
+        if (Index == 240)
+        {
+            return;
+        }
+        
         LobbyInfo.PlayerList.RemoveAt(Index);
     }
 
