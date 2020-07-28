@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "OnlineBeaconHostObject.h"
 #include "Http.h"
+#include "ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h"
 
 #include "ZombieBeaconHostObject.generated.h"
 
@@ -43,13 +44,15 @@ protected:
     void OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
 protected:
+    FServerData ServerData;
+    
     FZombieLobbyInfo LobbyInfo;
 
     UFUNCTION(BlueprintCallable)
-    void SetServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers, int MaxPlayers);
+    void SetServerData(FServerData NewServerData);
 
     UFUNCTION(BlueprintCallable)
-    void UpdateServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers, int MaxPlayers);
+    void UpdateServerData(FServerData NewServerData);
 
     UFUNCTION(BlueprintCallable)
     int GetCurrentPlayerCount();

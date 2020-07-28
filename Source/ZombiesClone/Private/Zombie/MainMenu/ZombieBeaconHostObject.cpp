@@ -67,17 +67,19 @@ void AZombieBeaconHostObject::OnProcessRequestComplete(FHttpRequestPtr Request, 
     }
 }
 
-void AZombieBeaconHostObject::SetServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers,
-    int MaxPlayers)
+void AZombieBeaconHostObject::SetServerData(FServerData NewServerData)
 {
+    ServerData = NewServerData;
+    ServerData.CurrentPlayers = GetCurrentPlayerCount();
+
     // construct json object to send to the server
     TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
     JsonObject->SetNumberField("ServerID", 0);
     JsonObject->SetStringField("IPAddress", "26153176253");
-    JsonObject->SetStringField("ServerName", ServerName);
-    JsonObject->SetStringField("MapName", MapName);
-    JsonObject->SetNumberField("CurrentPlayers", CurrentPlayers);
-    JsonObject->SetNumberField("MaxPlayers", MaxPlayers);
+    JsonObject->SetStringField("ServerName", ServerData.ServerName);
+    JsonObject->SetStringField("MapName", ServerData.MapName);
+    JsonObject->SetNumberField("CurrentPlayers", ServerData.CurrentPlayers);
+    JsonObject->SetNumberField("MaxPlayers", ServerData.MaxPlayers);
 
     FString JsonString;
     TSharedRef<TJsonWriter<TCHAR>> JsonWriter = TJsonWriterFactory<>::Create(&JsonString);
@@ -97,17 +99,19 @@ void AZombieBeaconHostObject::SetServerData(const FString& ServerName, const FSt
     Request->ProcessRequest();
 }
 
-void AZombieBeaconHostObject::UpdateServerData(const FString& ServerName, const FString& MapName, int CurrentPlayers,
-    int MaxPlayers)
+void AZombieBeaconHostObject::UpdateServerData(FServerData NewServerData)
 {
+    ServerData = NewServerData;
+    ServerData.CurrentPlayers = GetCurrentPlayerCount();
+
     // construct json object to send to the server
     TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
     JsonObject->SetNumberField("ServerID", 0);
     JsonObject->SetStringField("IPAddress", "26153176253");
-    JsonObject->SetStringField("ServerName", ServerName);
-    JsonObject->SetStringField("MapName", MapName);
-    JsonObject->SetNumberField("CurrentPlayers", CurrentPlayers);
-    JsonObject->SetNumberField("MaxPlayers", MaxPlayers);
+    JsonObject->SetStringField("ServerName", ServerData.ServerName);
+    JsonObject->SetStringField("MapName", ServerData.MapName);
+    JsonObject->SetNumberField("CurrentPlayers", ServerData.CurrentPlayers);
+    JsonObject->SetNumberField("MaxPlayers", ServerData.MaxPlayers);
 
     FString JsonString;
     TSharedRef<TJsonWriter<TCHAR>> JsonWriter = TJsonWriterFactory<>::Create(&JsonString);
@@ -152,10 +156,12 @@ void AZombieBeaconHostObject::OnClientConnected(AOnlineBeaconClient* NewClientAc
 
         UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
         UpdateClientLobbyInfo();
+
+        UpdateServerData(ServerData);
     }
     else
     {
-        UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT VALID"));
+        UE_LOG(LogTemp, Warning, TEXT("CONNECTED CLIENT INVALID"));
     }
 }
 
@@ -172,6 +178,7 @@ void AZombieBeaconHostObject::NotifyClientDisconnected(AOnlineBeaconClient* Leav
     }
 
     UpdateClientLobbyInfo();
+    UpdateServerData(ServerData);
 }
 
 void AZombieBeaconHostObject::ShutdownServer()
