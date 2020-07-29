@@ -24,6 +24,13 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     uint16 Cost;
 
+    UPROPERTY(ReplicatedUsing = OnRep_BarricadeUsed)
+    bool bIsUsed;
+
+    UFUNCTION()
+    void OnRep_BarricadeUsed();
+
 protected:
     virtual void BeginPlay() override;
+    virtual void Use(ACharacterBase* Player) override;
 };

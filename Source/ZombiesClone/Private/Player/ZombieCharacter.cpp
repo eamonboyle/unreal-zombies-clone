@@ -11,6 +11,7 @@
 AZombieCharacter::AZombieCharacter()
 {
     Interactable = nullptr;
+    InteractionRange = 200.f;
 }
 
 // Called when the game starts or when spawned
@@ -23,7 +24,7 @@ void AZombieCharacter::BeginPlay()
                               TEXT("GripPoint"));
 
     // setup the interact timer
-    GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::Interact, 0.2f, true);
+    GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::SetInteractableObject, 0.2f, true);
 }
 
 // Called to bind functionality to input
@@ -33,14 +34,50 @@ void AZombieCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
     // set up gameplay key bindings
     check(PlayerInputComponent);
+
+    PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AZombieCharacter::Interact);
 }
 
 void AZombieCharacter::Interact()
 {
-    // send out a ray trace infront of the character to see if it's looking at an interactable
+    UE_LOG(LogTemp, Warning, TEXT("INTERACTING"));
+
+    // perform server RPC if client
+    if (Interactable)
+    {
+        if (HasAuthority())
+        {
+            Interactable->Use(this);
+        }
+        else
+        {
+            Server_Interact(Interactable);
+        }
+    }
+}
+
+bool AZombieCharacter::Server_Interact_Validate(AInteractableBase* InteractingObject)
+{
+    return true;
+}
+
+void AZombieCharacter::Server_Interact_Implementation(AInteractableBase* InteractingObject)
+{
+    float Distance = GetDistanceTo(InteractingObject);
+    UE_LOG(LogTemp, Warning, TEXT("DISTANCE: %f - %f"), Distance, InteractionRange + 30.f);
+
+    if (Distance < InteractionRange + 30.f)
+    {
+        InteractingObject->Use(this);
+    }
+}
+
+void AZombieCharacter::SetInteractableObject()
+{
+    // send out a ray trace in front of the character to see if it's looking at an interactable
     FVector Start = GetFirstPersonCameraComponent()->GetComponentLocation();
     FVector Rotation = GetFirstPersonCameraComponent()->GetComponentRotation().Vector();
-    FVector End = Start + Rotation * 500.f;
+    FVector End = Start + Rotation * InteractionRange;
 
     FHitResult HitResult;
     FCollisionObjectQueryParams CollisionQuery;

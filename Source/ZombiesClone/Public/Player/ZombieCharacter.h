@@ -19,9 +19,12 @@ public:
 protected:
     UPROPERTY(BlueprintAssignable)
     FInteractChanged OnInteractChanged;
-    
+
     FTimerHandle TInteractTimerHandle;
     class AInteractableBase* Interactable;
+
+    UPROPERTY(EditDefaultsOnly)
+    float InteractionRange;
 
 protected:
     virtual void BeginPlay() override;
@@ -29,4 +32,10 @@ protected:
 
 protected:
     void Interact();
+    UFUNCTION(Server, Reliable, WithValidation)
+    void Server_Interact(class AInteractableBase* InteractingObject);
+    bool Server_Interact_Validate(class AInteractableBase* InteractingObject);
+    void Server_Interact_Implementation(class AInteractableBase* InteractingObject);
+    
+    void SetInteractableObject();
 };
