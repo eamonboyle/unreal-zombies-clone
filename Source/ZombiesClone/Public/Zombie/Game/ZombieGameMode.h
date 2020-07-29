@@ -18,4 +18,15 @@ class ZOMBIESCLONE_API AZombieGameMode : public AGameModeBase
 
 public:
     AZombieGameMode();
+
+protected:
+    bool bHasLoadedSpawnPoints;
+
+    UPROPERTY()
+    TArray<class AZombiePlayerSpawnPoint*> PlayerSpawnPoints;
+
+protected:
+    virtual void PostLogin(APlayerController* NewPlayer) override;
+
+    void SetPlayerSpawnPoints();
 };
