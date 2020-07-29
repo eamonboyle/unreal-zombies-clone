@@ -12,7 +12,7 @@ AZombieGameMode::AZombieGameMode()
 {
     // set default pawn class to our Blueprinted character
     static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(
-        TEXT("/Game/BlueprintClasses/Player/BP_CharacterBase.BP_CharacterBase_C"));
+        TEXT("/Game/Blueprints/Player/BP_CharacterBase.BP_CharacterBase_C"));
     DefaultPawnClass = PlayerPawnClassFinder.Class;
 
     HUDClass = AZombiesCloneHUD::StaticClass();
@@ -37,7 +37,8 @@ void AZombieGameMode::PostLogin(APlayerController* NewPlayer)
             {
                 FVector SpawnLocation = PlayerSpawnPoint->GetActorLocation();
 
-                if (APawn* PlayerPawn = GetWorld()->SpawnActor<APawn>(DefaultPawnClass, SpawnLocation, FRotator::ZeroRotator))
+                if (APawn* PlayerPawn = GetWorld()->SpawnActor<APawn>(DefaultPawnClass, SpawnLocation,
+                                                                      FRotator::ZeroRotator))
                 {
                     UE_LOG(LogTemp, Warning, TEXT("Spawned pawn to possess"));
                     NewPlayer->Possess(PlayerPawn);

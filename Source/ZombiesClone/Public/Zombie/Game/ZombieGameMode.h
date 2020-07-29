@@ -25,6 +25,9 @@ protected:
     UPROPERTY()
     TArray<class AZombiePlayerSpawnPoint*> PlayerSpawnPoints;
 
+    UPROPERTY(EditAnywhere, Category = "ZombieSettings")
+    TSubclassOf<class AZombieBase> ZombieClass;
+
 protected:
     virtual void PostLogin(APlayerController* NewPlayer) override;
 
