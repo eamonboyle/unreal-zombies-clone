@@ -27,6 +27,9 @@
               <e p="CharacterBase.cpp" t="Include" />
             </e>
             <e p="Zombie" t="Include">
+              <e p="Enemy" t="Include">
+                <e p="ZombieBase.cpp" t="Include" />
+              </e>
               <e p="Game" t="Include">
                 <e p="ZombieGameInstanceBase.cpp" t="Include" />
                 <e p="ZombieGameMode.cpp" t="Include" />
@@ -44,6 +47,9 @@
               <e p="CharacterBase.h" t="Include" />
             </e>
             <e p="Zombie" t="Include">
+              <e p="Enemy" t="Include">
+                <e p="ZombieBase.h" t="Include" />
+              </e>
               <e p="Game" t="Include">
                 <e p="ZombieGameInstanceBase.h" t="Include" />
                 <e p="ZombieGameMode.h" t="Include" />

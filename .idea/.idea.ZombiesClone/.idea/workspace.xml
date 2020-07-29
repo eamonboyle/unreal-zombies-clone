@@ -20,11 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/BlueprintClasses/Zombie/BS_NaziZombie_IdleRun.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/NaziZombies/Map1.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/NaziZombies/Map1.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/NaziZombies/Map2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/NaziZombies/Map2.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BlueprintClasses/Zombie/ABP_NaziZombie.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BlueprintClasses/Zombie/ABP_NaziZombie.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/BlueprintClasses/Zombie/BP_NaziZombie.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/BlueprintClasses/Zombie/BP_NaziZombie.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Runtime/ApplicationCore/Private/Mac/MacPlatformSplash.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombiePlayerSpawnPoint.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Source/Editor/EditorStyle/Private/EditorFontGlyphs.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombiePlayerSpawnPoint.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieMainMenuGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -48,6 +51,7 @@
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://F:/Epic Games/UE_4.25/Engine/Plugins/Runtime/Steam/SteamSockets/Source/SteamSockets/Private/SteamSocket.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/ZombiesClone.Build.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/ZombiesCloneGameMode.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" root0="FORCE_HIGHLIGHTING" />
@@ -85,6 +89,8 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombiePlayerSpawnPoint.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombiePlayerSpawnPoint.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameMode.h" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameMode.cpp" />
       </list>
     </option>
@@ -535,7 +541,7 @@
       <workItem from="1595864600195" duration="12939000" />
       <workItem from="1595946382147" duration="7744000" />
       <workItem from="1595971748589" duration="4161000" />
-      <workItem from="1596011604510" duration="2570000" />
+      <workItem from="1596011604510" duration="3759000" />
     </task>
     <servers />
   </component>
@@ -561,10 +567,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="498" height="446" key="SwitcherDM" timestamp="1596012214194">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1596015394982">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1596012214194" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1596015394982" />
     <state x="578" y="183" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595771625065">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
