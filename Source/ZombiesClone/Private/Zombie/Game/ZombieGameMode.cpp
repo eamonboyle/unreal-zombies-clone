@@ -129,14 +129,22 @@ void AZombieGameMode::NewZoneActive(uint8 ZoneNumber)
 {
     UE_LOG(LogTemp, Warning, TEXT("Setting active zone: %d"), ZoneNumber);
 
-    for (AZombieSpawnPoint* SpawnPoint : ZombieSpawnPoints)
+    int Control = 0;
+
+    for (int16 x = ZombieSpawnPoints.Num() - 1; x >= 0; --x)
     {
+        AZombieSpawnPoint* SpawnPoint = ZombieSpawnPoints[x];
+        
+        UE_LOG(LogTemp, Warning, TEXT("Loop Count: %d"), Control);
+        ++Control;
+        
         if (SpawnPoint != nullptr && ZoneNumber == SpawnPoint->GetZone() && !SpawnPoint->IsActive())
         {
             ActiveZombieSpawnPoints.Add(SpawnPoint);
             SpawnPoint->Activate();
 
             // remove spawn point from the ZombieSpawnPoints array
+            ZombieSpawnPoints.RemoveAt(x);
         }
     }
 }
@@ -156,7 +164,7 @@ void AZombieGameMode::SpawnZombie()
 
                 if (AZombieBase* Zombie = GetWorld()->SpawnActor<AZombieBase>(ZombieClass, Location, Rotation))
                 {
-                    UE_LOG(LogTemp, Warning, TEXT("SPAWNING ZOMBIE"));
+                    // UE_LOG(LogTemp, Warning, TEXT("SPAWNING ZOMBIE"));
                     --ZombiesRemaining;
                 }
             }
