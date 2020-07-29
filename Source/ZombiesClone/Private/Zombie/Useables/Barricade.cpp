@@ -11,4 +11,10 @@ ABarricade::ABarricade()
 
     RootComponent = MeshComp;
     Cost = 500;
+    UIMessage += FString(" [Cost: " + FString::FromInt(Cost) + "]");
+}
+
+void ABarricade::BeginPlay()
+{
+    Super::BeginPlay();
 }

@@ -47,15 +47,18 @@ void AZombieCharacter::Interact()
     FCollisionQueryParams CollisionParams;
     CollisionParams.AddIgnoredActor(this);
     GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, CollisionQuery, CollisionParams);
-
-    if (AInteractableBase* Temp = Cast<AInteractableBase>(HitResult.GetActor()))
+    
+    AInteractableBase* Temp = Cast<AInteractableBase>(HitResult.GetActor());
+    if (Interactable == nullptr && Temp)
     {
+        UE_LOG(LogTemp, Warning, TEXT("IS NOW A VALID PTR"));
         Interactable = Temp;
-        UE_LOG(LogTemp, Warning, TEXT("HIT %s"), *HitResult.GetActor()->GetName());
+        OnInteractChanged.Broadcast(Interactable->GetUIMessage());
     }
-    else
+    else if (Interactable && Temp == nullptr)
     {
+        UE_LOG(LogTemp, Warning, TEXT("IS NOW A NULL PTR"));
         Interactable = nullptr;
-        UE_LOG(LogTemp, Warning, TEXT("Did not hit anything important"));
+        OnInteractChanged.Broadcast(FString());
     }
 }

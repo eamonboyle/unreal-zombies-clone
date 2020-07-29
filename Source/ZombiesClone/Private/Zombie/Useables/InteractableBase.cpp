@@ -8,7 +8,8 @@
 // Sets default values
 AInteractableBase::AInteractableBase()
 {
-	UIMessage = TEXT("Press and hold F to purchase");
+	ObjectName = "Default";
+	UIMessage = TEXT("Press F to buy " + ObjectName);
 }
 
 // Called when the game starts or when spawned

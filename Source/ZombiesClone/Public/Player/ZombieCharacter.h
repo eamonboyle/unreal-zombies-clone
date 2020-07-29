@@ -6,9 +6,8 @@
 #include "Player/CharacterBase.h"
 #include "ZombieCharacter.generated.h"
 
-/**
- * 
- */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FInteractChanged, const FString&, OnInteractChanged);
+
 UCLASS()
 class ZOMBIESCLONE_API AZombieCharacter : public ACharacterBase
 {
@@ -18,6 +17,9 @@ public:
     AZombieCharacter();
 
 protected:
+    UPROPERTY(BlueprintAssignable)
+    FInteractChanged OnInteractChanged;
+    
     FTimerHandle TInteractTimerHandle;
     class AInteractableBase* Interactable;
 

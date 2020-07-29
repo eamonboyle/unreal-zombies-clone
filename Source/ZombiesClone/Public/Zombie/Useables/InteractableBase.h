@@ -19,6 +19,9 @@ protected:
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     FString UIMessage;
 
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    FString ObjectName;
+
 protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;

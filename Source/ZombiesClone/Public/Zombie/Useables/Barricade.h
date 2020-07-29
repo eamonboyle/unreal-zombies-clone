@@ -23,4 +23,7 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     uint16 Cost;
+
+protected:
+    virtual void BeginPlay() override;
 };
