@@ -28,6 +28,9 @@ protected:
     TArray<class AZombiePlayerSpawnPoint*> PlayerSpawnPoints;
 
     UPROPERTY()
+    TArray<class AZombieSpawnPoint*> ActiveZombieSpawnPoints;
+
+    UPROPERTY()
     TArray<class AZombieSpawnPoint*> ZombieSpawnPoints;
 
     UPROPERTY(EditAnywhere, Category = "ZombieSettings")

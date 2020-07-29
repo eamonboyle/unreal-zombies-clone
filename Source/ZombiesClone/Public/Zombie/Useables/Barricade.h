@@ -20,7 +20,7 @@ public:
 protected:
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     class USkeletalMeshComponent* MeshComp;
-    
+
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     class UStaticMeshComponent* CollisionMesh;
 
@@ -29,6 +29,9 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     uint16 Cost;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    uint8 AccessZone;
 
     UPROPERTY(ReplicatedUsing = OnRep_BarricadeUsed)
     bool bIsUsed;
@@ -39,4 +42,7 @@ protected:
 protected:
     virtual void BeginPlay() override;
     virtual void Use(ACharacterBase* Player) override;
+
+public:
+    uint8 GetAccessZone();
 };

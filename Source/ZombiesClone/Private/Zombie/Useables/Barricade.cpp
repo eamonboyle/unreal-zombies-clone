@@ -16,6 +16,7 @@ ABarricade::ABarricade()
     Cost = 500;
     UIMessage += FString(" [Cost: " + FString::FromInt(Cost) + "]");
     bIsUsed = false;
+    AccessZone = 0;
 }
 
 void ABarricade::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -49,4 +50,9 @@ void ABarricade::Use(ACharacterBase* Player)
     // play animation to move barricade
     bIsUsed = true;
     OnRep_BarricadeUsed();
+}
+
+uint8 ABarricade::GetAccessZone()
+{
+    return AccessZone;
 }

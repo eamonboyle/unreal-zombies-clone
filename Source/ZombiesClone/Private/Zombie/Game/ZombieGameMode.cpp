@@ -11,6 +11,7 @@
 #include "ZombiesClone/Public/Player/ZombieCharacter.h"
 #include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameState.h"
+#include "ZombiesClone/Public/Zombie/Useables/Barricade.h"
 
 AZombieGameMode::AZombieGameMode()
 {
@@ -44,6 +45,17 @@ void AZombieGameMode::BeginPlay()
             if (AZombieSpawnPoint* ZombieSpawnPoint = Cast<AZombieSpawnPoint>(TempActor))
             {
                 ZombieSpawnPoints.Add(ZombieSpawnPoint);
+
+                // sets up the zombies spawn zones
+                if (ABarricade* LinkedBarricade = ZombieSpawnPoint->GetLinkedBarricade())
+                {
+                    ZombieSpawnPoint->SetZone(LinkedBarricade->GetAccessZone());
+                    UE_LOG(LogTemp, Warning, TEXT("Zone Number: %d"), LinkedBarricade->GetAccessZone());
+                }
+                else
+                {
+                    ActiveZombieSpawnPoints.Add(ZombieSpawnPoint);
+                }
             }
         }
     }
@@ -118,11 +130,11 @@ void AZombieGameMode::SpawnZombie()
 {
     if (ZombiesRemaining > 0)
     {
-        int RandomIndex = FMath::RandRange(0, ZombieSpawnPoints.Num() - 1);
+        int RandomIndex = FMath::RandRange(0, ActiveZombieSpawnPoints.Num() - 1);
 
-        if (ZombieSpawnPoints.IsValidIndex(RandomIndex))
+        if (ActiveZombieSpawnPoints.IsValidIndex(RandomIndex))
         {
-            if (AZombieSpawnPoint* SpawnPoint = ZombieSpawnPoints[RandomIndex])
+            if (AZombieSpawnPoint* SpawnPoint = ActiveZombieSpawnPoints[RandomIndex])
             {
                 FVector Location = SpawnPoint->GetActorLocation();
                 FRotator Rotation = SpawnPoint->GetActorRotation();

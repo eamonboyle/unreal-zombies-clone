@@ -16,4 +16,17 @@ class ZOMBIESCLONE_API AZombieSpawnPoint : public ATargetPoint
 
 public:
     AZombieSpawnPoint();
+
+protected:
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    class ABarricade* LinkedBarricade;
+
+    uint8 Zone;
+
+    virtual void BeginPlay() override;
+
+public:
+    class ABarricade* GetLinkedBarricade();
+    uint8 GetZone();
+    void SetZone(uint8 ZoneNumber);
 };
