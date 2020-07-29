@@ -16,4 +16,12 @@ class ZOMBIESCLONE_API AZombieGameState : public AGameStateBase
 
 public:
     AZombieGameState();
+
+protected:
+    uint16 RoundNumber;
+    uint8 ZombiesOnMap;
+
+    public:
+    uint16 GetRoundNumber();
+    void IncrementRoundNumber();
 };

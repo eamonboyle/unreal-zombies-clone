@@ -35,6 +35,7 @@
                 <e p="ZombieGameMode.cpp" t="Include" />
                 <e p="ZombieGameState.cpp" t="Include" />
                 <e p="ZombiePlayerSpawnPoint.cpp" t="Include" />
+                <e p="ZombieSpawnPoint.cpp" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
                 <e p="ZombieBeaconClient.cpp" t="Include" />
@@ -56,6 +57,7 @@
                 <e p="ZombieGameMode.h" t="Include" />
                 <e p="ZombieGameState.h" t="Include" />
                 <e p="ZombiePlayerSpawnPoint.h" t="Include" />
+                <e p="ZombieSpawnPoint.h" t="Include" />
               </e>
               <e p="MainMenu" t="Include">
                 <e p="ZombieBeaconClient.h" t="Include" />

@@ -5,8 +5,12 @@
 
 
 #include "Kismet/GameplayStatics.h"
+#include "TimerManager.h"
+#include "Zombie/Game/ZombieSpawnPoint.h"
 #include "ZombiesClone/ZombiesCloneHUD.h"
 #include "ZombiesClone/Public/Player/CharacterBase.h"
+#include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
+#include "ZombiesClone/Public/Zombie/Game/ZombieGameState.h"
 
 AZombieGameMode::AZombieGameMode()
 {
@@ -18,6 +22,47 @@ AZombieGameMode::AZombieGameMode()
     HUDClass = AZombiesCloneHUD::StaticClass();
 
     bHasLoadedSpawnPoints = false;
+
+    ZombiesRemaining = 0;
+}
+
+void AZombieGameMode::BeginPlay()
+{
+    Super::BeginPlay();
+
+    ZombieGameState = GetGameState<AZombieGameState>();
+    CalculateZombieCount();
+
+    // get all of the zombie spawn points in the game
+    TArray<AActor*> TempActors;
+    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AZombieSpawnPoint::StaticClass(), TempActors);
+
+    if (TempActors.Num() > 0)
+    {
+        for (AActor* TempActor : TempActors)
+        {
+            if (AZombieSpawnPoint* ZombieSpawnPoint = Cast<AZombieSpawnPoint>(TempActor))
+            {
+                ZombieSpawnPoints.Add(ZombieSpawnPoint);
+            }
+        }
+    }
+
+    UE_LOG(LogTemp, Warning, TEXT("Zombie Spawn Points: %d"), ZombieSpawnPoints.Num());
+
+    // start the zombie spawn timer
+    GetWorld()->GetTimerManager().SetTimer(TZombieSpawnHandle, this, &AZombieGameMode::SpawnZombie, 2.0f, true);
+}
+
+void AZombieGameMode::CalculateZombieCount()
+{
+    if (ZombieGameState != nullptr)
+    {
+        uint16 RoundNumber = ZombieGameState->GetRoundNumber();
+
+        // do calculations to get the Zombie amount here
+        ZombiesRemaining = 5;
+    }
 }
 
 void AZombieGameMode::PostLogin(APlayerController* NewPlayer)
@@ -40,7 +85,6 @@ void AZombieGameMode::PostLogin(APlayerController* NewPlayer)
                 if (APawn* PlayerPawn = GetWorld()->SpawnActor<APawn>(DefaultPawnClass, SpawnLocation,
                                                                       FRotator::ZeroRotator))
                 {
-                    UE_LOG(LogTemp, Warning, TEXT("Spawned pawn to possess"));
                     NewPlayer->Possess(PlayerPawn);
                     PlayerSpawnPoint->SetUsed(true);
                     return;
@@ -67,6 +111,29 @@ void AZombieGameMode::SetPlayerSpawnPoints()
         }
     }
 
-    UE_LOG(LogTemp, Warning, TEXT("Spawn Point Count: %d"), PlayerSpawnPoints.Num());
     bHasLoadedSpawnPoints = true;
+}
+
+void AZombieGameMode::SpawnZombie()
+{
+    if (ZombiesRemaining > 0)
+    {
+        int RandomIndex = FMath::RandRange(0, ZombieSpawnPoints.Num() - 1);
+
+        if (AZombieSpawnPoint* SpawnPoint = ZombieSpawnPoints[RandomIndex])
+        {
+            FVector Location = SpawnPoint->GetActorLocation();
+            FRotator Rotation = SpawnPoint->GetActorRotation();
+        
+            if (AZombieBase* Zombie = GetWorld()->SpawnActor<AZombieBase>(ZombieClass, Location, Rotation))
+            {
+                UE_LOG(LogTemp, Warning, TEXT("SPAWNING ZOMBIE"));
+                --ZombiesRemaining;
+            }
+        }
+    }
+    else
+    {
+        GetWorld()->GetTimerManager().PauseTimer(TZombieSpawnHandle);
+    }
 }
