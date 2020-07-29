@@ -7,6 +7,7 @@
 AZombieSpawnPoint::AZombieSpawnPoint()
 {
     Zone = 0;
+    bIsActive = false;
 }
 
 void AZombieSpawnPoint::BeginPlay()
@@ -27,4 +28,14 @@ uint8 AZombieSpawnPoint::GetZone()
 void AZombieSpawnPoint::SetZone(uint8 ZoneNumber)
 {
     Zone = ZoneNumber;
+}
+
+bool AZombieSpawnPoint::IsActive()
+{
+    return bIsActive;
+}
+
+void AZombieSpawnPoint::Activate()
+{
+    bIsActive = true;
 }

@@ -21,7 +21,7 @@ public:
 
 protected:
     class AZombieGameState* ZombieGameState;
-    
+
     bool bHasLoadedSpawnPoints;
 
     UPROPERTY()
@@ -52,4 +52,7 @@ protected:
     virtual void PostLogin(APlayerController* NewPlayer) override;
 
     void SetPlayerSpawnPoints();
+
+public:
+    void NewZoneActive(uint8 ZoneNumber);
 };

@@ -2,6 +2,7 @@
 
 
 #include "ZombiesClone/Public/Zombie/Useables/Barricade.h"
+#include "ZombiesClone/Public/Zombie/Game/ZombieGameMode.h"
 
 #include "Components/StaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -45,11 +46,19 @@ void ABarricade::BeginPlay()
 
 void ABarricade::Use(ACharacterBase* Player)
 {
-    UE_LOG(LogTemp, Warning, TEXT("USING %s"), *ObjectName);
+    if (HasAuthority())
+    {
+        UE_LOG(LogTemp, Warning, TEXT("USING %s"), *ObjectName);
 
-    // play animation to move barricade
-    bIsUsed = true;
-    OnRep_BarricadeUsed();
+        // play animation to move barricade
+        bIsUsed = true;
+        OnRep_BarricadeUsed();
+
+        if (AZombieGameMode* GM = GetWorld()->GetAuthGameMode<AZombieGameMode>())
+        {
+            GM->NewZoneActive(AccessZone);
+        }
+    }
 }
 
 uint8 ABarricade::GetAccessZone()

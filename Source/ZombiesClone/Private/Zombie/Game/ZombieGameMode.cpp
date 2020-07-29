@@ -44,12 +44,11 @@ void AZombieGameMode::BeginPlay()
         {
             if (AZombieSpawnPoint* ZombieSpawnPoint = Cast<AZombieSpawnPoint>(TempActor))
             {
-                ZombieSpawnPoints.Add(ZombieSpawnPoint);
-
                 // sets up the zombies spawn zones
                 if (ABarricade* LinkedBarricade = ZombieSpawnPoint->GetLinkedBarricade())
                 {
                     ZombieSpawnPoint->SetZone(LinkedBarricade->GetAccessZone());
+                    ZombieSpawnPoints.Add(ZombieSpawnPoint);
                     UE_LOG(LogTemp, Warning, TEXT("Zone Number: %d"), LinkedBarricade->GetAccessZone());
                 }
                 else
@@ -124,6 +123,22 @@ void AZombieGameMode::SetPlayerSpawnPoints()
     }
 
     bHasLoadedSpawnPoints = true;
+}
+
+void AZombieGameMode::NewZoneActive(uint8 ZoneNumber)
+{
+    UE_LOG(LogTemp, Warning, TEXT("Setting active zone: %d"), ZoneNumber);
+
+    for (AZombieSpawnPoint* SpawnPoint : ZombieSpawnPoints)
+    {
+        if (SpawnPoint != nullptr && ZoneNumber == SpawnPoint->GetZone() && !SpawnPoint->IsActive())
+        {
+            ActiveZombieSpawnPoints.Add(SpawnPoint);
+            SpawnPoint->Activate();
+
+            // remove spawn point from the ZombieSpawnPoints array
+        }
+    }
 }
 
 void AZombieGameMode::SpawnZombie()
