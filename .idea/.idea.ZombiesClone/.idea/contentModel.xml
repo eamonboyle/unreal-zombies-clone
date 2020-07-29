@@ -46,6 +46,8 @@
               <e p="Useables" t="Include">
                 <e p="Barricade.cpp" t="Include" />
                 <e p="InteractableBase.cpp" t="Include" />
+                <e p="Weapon1911.cpp" t="Include" />
+                <e p="WeaponBase.cpp" t="Include" />
               </e>
             </e>
           </e>
@@ -73,6 +75,8 @@
               <e p="Useables" t="Include">
                 <e p="Barricade.h" t="Include" />
                 <e p="InteractableBase.h" t="Include" />
+                <e p="Weapon1911.h" t="Include" />
+                <e p="WeaponBase.h" t="Include" />
               </e>
             </e>
           </e>

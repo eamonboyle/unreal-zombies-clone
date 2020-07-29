@@ -20,17 +20,17 @@ protected:
     UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
     class USkeletalMeshComponent* Mesh1P;
 
-    /** Gun mesh: 1st person view (seen only by self) */
-    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-    class USkeletalMeshComponent* FP_Gun;
-
-    /** Location on gun mesh where projectiles should spawn. */
-    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-    class USceneComponent* FP_MuzzleLocation;
-
     /** First person camera */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
     class UCameraComponent* FirstPersonCameraComponent;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    TSubclassOf<class AWeaponBase> StartingWeaponClass;
+
+    /** the characters weapon */
+    AWeaponBase* CurrentWeapon;
+    int32 WeaponIndex;
+    TArray<AWeaponBase*> WeaponArray;
 
 protected:
     // Called when the game starts or when spawned
@@ -44,22 +44,6 @@ public:
     /** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
     float BaseLookUpRate;
-
-    /** Gun muzzle's offset from the characters location */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
-    FVector GunOffset;
-
-    /** Projectile class to spawn */
-    UPROPERTY(EditDefaultsOnly, Category=Projectile)
-    TSubclassOf<class AZombiesCloneProjectile> ProjectileClass;
-
-    /** Sound to play each time we fire */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
-    class USoundBase* FireSound;
-
-    /** AnimMontage to play each time we fire */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-    class UAnimMontage* FireAnimation;
 
 protected:
     /** Fires a projectile. */
