@@ -32,6 +32,9 @@ protected:
     int32 WeaponIndex;
     TArray<AWeaponBase*> WeaponArray;
 
+    // set to replicate, skip owner
+    bool bIsAiming;
+
 protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
@@ -49,10 +52,14 @@ protected:
     /** Fires a projectile. */
     virtual void OnFire();
 
+    /** ADS */
+    virtual void OnAimingStart();
+    virtual void OnAimingEnd();
+
     /** Handles moving forward/backward */
     void MoveForward(float Val);
 
-    /** Handles stafing movement, left and right */
+    /** Handles strafing movement, left and right */
     void MoveRight(float Val);
 
     /** called when turning */
@@ -60,6 +67,10 @@ protected:
 
     /** called when looking up / down */
     void LookUpAtRate(float Rate);
+
+public:
+    UFUNCTION(BlueprintCallable)
+    bool GetIsAiming();
 
 public:
     // Called to bind functionality to input

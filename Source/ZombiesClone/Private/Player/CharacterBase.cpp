@@ -36,6 +36,8 @@ ACharacterBase::ACharacterBase()
     Mesh1P->SetRelativeLocation(FVector(-0.5f, -4.4f, -155.7f));
 
     WeaponIndex = 0;
+
+    bIsAiming = false;
 }
 
 // Called when the game starts or when spawned
@@ -70,6 +72,10 @@ void ACharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
     PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
     PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
+    // bind aim events
+    PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ACharacterBase::OnAimingStart);
+    PlayerInputComponent->BindAction("Aim", IE_Released, this, &ACharacterBase::OnAimingEnd);
+
     // Bind fire event
     PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ACharacterBase::OnFire);
 
@@ -86,6 +92,22 @@ void ACharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 void ACharacterBase::OnFire()
 {
 }
+
+void ACharacterBase::OnAimingStart()
+{
+    bIsAiming = true;
+}
+
+void ACharacterBase::OnAimingEnd()
+{
+    bIsAiming = false;
+}
+
+bool ACharacterBase::GetIsAiming()
+{
+    return bIsAiming;
+}
+
 
 void ACharacterBase::MoveForward(float Value)
 {
