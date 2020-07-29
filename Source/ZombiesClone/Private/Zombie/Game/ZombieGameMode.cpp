@@ -16,7 +16,7 @@ AZombieGameMode::AZombieGameMode()
 {
     // set default pawn class to our Blueprinted character
     static ConstructorHelpers::FClassFinder<APawn> PlayerPawnClassFinder(
-        TEXT("/Game/Blueprints/Player/BP_CharacterBase.BP_CharacterBase_C"));
+        TEXT("/Game/Blueprints/Player/BP_ZombieCharacter.BP_ZombieCharacter_C"));
     DefaultPawnClass = PlayerPawnClassFinder.Class;
 
     HUDClass = AZombiesCloneHUD::StaticClass();
@@ -120,15 +120,18 @@ void AZombieGameMode::SpawnZombie()
     {
         int RandomIndex = FMath::RandRange(0, ZombieSpawnPoints.Num() - 1);
 
-        if (AZombieSpawnPoint* SpawnPoint = ZombieSpawnPoints[RandomIndex])
+        if (ZombieSpawnPoints.IsValidIndex(RandomIndex))
         {
-            FVector Location = SpawnPoint->GetActorLocation();
-            FRotator Rotation = SpawnPoint->GetActorRotation();
-        
-            if (AZombieBase* Zombie = GetWorld()->SpawnActor<AZombieBase>(ZombieClass, Location, Rotation))
+            if (AZombieSpawnPoint* SpawnPoint = ZombieSpawnPoints[RandomIndex])
             {
-                UE_LOG(LogTemp, Warning, TEXT("SPAWNING ZOMBIE"));
-                --ZombiesRemaining;
+                FVector Location = SpawnPoint->GetActorLocation();
+                FRotator Rotation = SpawnPoint->GetActorRotation();
+
+                if (AZombieBase* Zombie = GetWorld()->SpawnActor<AZombieBase>(ZombieClass, Location, Rotation))
+                {
+                    UE_LOG(LogTemp, Warning, TEXT("SPAWNING ZOMBIE"));
+                    --ZombiesRemaining;
+                }
             }
         }
     }

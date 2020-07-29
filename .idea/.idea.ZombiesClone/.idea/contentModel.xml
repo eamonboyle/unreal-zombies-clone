@@ -25,6 +25,7 @@
           <e p="Private" t="Include">
             <e p="Player" t="Include">
               <e p="CharacterBase.cpp" t="Include" />
+              <e p="ZombieCharacter.cpp" t="Include" />
             </e>
             <e p="Zombie" t="Include">
               <e p="Enemy" t="Include">
@@ -51,6 +52,7 @@
           <e p="Public" t="Include">
             <e p="Player" t="Include">
               <e p="CharacterBase.h" t="Include" />
+              <e p="ZombieCharacter.h" t="Include" />
             </e>
             <e p="Zombie" t="Include">
               <e p="Enemy" t="Include">
