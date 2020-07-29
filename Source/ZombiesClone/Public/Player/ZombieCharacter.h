@@ -18,6 +18,13 @@ public:
     AZombieCharacter();
 
 protected:
+    FTimerHandle TInteractTimerHandle;
+    class AInteractableBase* Interactable;
+
+protected:
     virtual void BeginPlay() override;
     virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
+protected:
+    void Interact();
 };

@@ -31,6 +31,9 @@ protected:
     TArray<class AZombieSpawnPoint*> ZombieSpawnPoints;
 
     UPROPERTY(EditAnywhere, Category = "ZombieSettings")
+    TSubclassOf<class AZombieCharacter> PlayerClass;
+
+    UPROPERTY(EditAnywhere, Category = "ZombieSettings")
     TSubclassOf<class AZombieBase> ZombieClass;
 
     FTimerHandle TZombieSpawnHandle;

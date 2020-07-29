@@ -3,12 +3,12 @@
 
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameMode.h"
 
-
-#include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "Zombie/Game/ZombieSpawnPoint.h"
 #include "ZombiesClone/ZombiesCloneHUD.h"
-#include "ZombiesClone/Public/Player/CharacterBase.h"
+#include "ZombiesClone/Public/Player/ZombieCharacter.h"
 #include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameState.h"
 
@@ -82,7 +82,7 @@ void AZombieGameMode::PostLogin(APlayerController* NewPlayer)
             {
                 FVector SpawnLocation = PlayerSpawnPoint->GetActorLocation();
 
-                if (APawn* PlayerPawn = GetWorld()->SpawnActor<APawn>(DefaultPawnClass, SpawnLocation,
+                if (APawn* PlayerPawn = GetWorld()->SpawnActor<APawn>(PlayerClass, SpawnLocation,
                                                                       FRotator::ZeroRotator))
                 {
                     NewPlayer->Possess(PlayerPawn);
