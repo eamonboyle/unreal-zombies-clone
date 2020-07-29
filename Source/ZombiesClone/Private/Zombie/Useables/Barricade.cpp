@@ -3,6 +3,7 @@
 
 #include "ZombiesClone/Public/Zombie/Useables/Barricade.h"
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameMode.h"
+#include "ZombiesClone/Public/Player/ZombieCharacter.h"
 
 #include "Components/StaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -36,6 +37,8 @@ void ABarricade::OnRep_BarricadeUsed()
         CollisionMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
         MeshComp->PlayAnimation(OpenAnimation, false);
     }
+
+    UIMessage = FString();
 }
 
 void ABarricade::BeginPlay()
@@ -44,9 +47,9 @@ void ABarricade::BeginPlay()
     SetReplicates(true);
 }
 
-void ABarricade::Use(ACharacterBase* Player)
+void ABarricade::Use(AZombieCharacter* Player)
 {
-    if (HasAuthority())
+    if (HasAuthority() && !bIsUsed && Player != nullptr && Player->DecrementPoints(Cost))
     {
         UE_LOG(LogTemp, Warning, TEXT("USING %s"), *ObjectName);
 

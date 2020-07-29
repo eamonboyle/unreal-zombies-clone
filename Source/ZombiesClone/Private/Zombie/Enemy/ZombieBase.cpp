@@ -3,6 +3,8 @@
 
 #include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
 
+#include "Player/ZombieCharacter.h"
+
 // Sets default values
 AZombieBase::AZombieBase()
 {
@@ -15,4 +17,13 @@ AZombieBase::AZombieBase()
 void AZombieBase::BeginPlay()
 {
 	Super::BeginPlay();	
+}
+
+void AZombieBase::Hit(AZombieCharacter* Player)
+{
+	// see where the shot hit, calculate points / damage based on the body part
+	if (HasAuthority() && Player != nullptr)
+	{
+		Player->IncrementPoints(100);
+	}
 }

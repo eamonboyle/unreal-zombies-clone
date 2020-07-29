@@ -2,7 +2,10 @@
 
 
 #include "ZombiesClone/Public/Player/ZombieCharacter.h"
+
+#include "DrawDebugHelpers.h"
 #include "ZombiesClone/Public/Zombie/Useables/InteractableBase.h"
+#include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
 
 #include "TimerManager.h"
 #include "Engine/World.h"
@@ -12,6 +15,7 @@ AZombieCharacter::AZombieCharacter()
 {
     Interactable = nullptr;
     InteractionRange = 200.f;
+    Points = 500;
 }
 
 // Called when the game starts or when spawned
@@ -24,7 +28,8 @@ void AZombieCharacter::BeginPlay()
                               TEXT("GripPoint"));
 
     // setup the interact timer
-    GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::SetInteractableObject, 0.2f, true);
+    GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::SetInteractableObject, 0.2f,
+                                           true);
 }
 
 // Called to bind functionality to input
@@ -36,6 +41,32 @@ void AZombieCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
     check(PlayerInputComponent);
 
     PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &AZombieCharacter::Interact);
+}
+
+void AZombieCharacter::OnFire()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Shooting Weapon"));
+    
+    // send out a ray trace in front of the character to see if it's shooting a zombie
+    FVector Start = GetFirstPersonCameraComponent()->GetComponentLocation();
+    FVector Rotation = GetFirstPersonCameraComponent()->GetComponentRotation().Vector();
+    FVector End = Start + Rotation * 10000.0f;
+
+    FHitResult HitResult;
+    FCollisionObjectQueryParams CollisionQuery;
+    FCollisionQueryParams CollisionParams;
+    CollisionParams.AddIgnoredActor(this);
+    
+    if (GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, CollisionQuery, CollisionParams))
+    {
+        if (AZombieBase* Zombie = Cast<AZombieBase>(HitResult.GetActor()))
+        {
+            UE_LOG(LogTemp, Warning, TEXT("ZOMBIE HIT %s"), *Zombie->GetName());
+            Zombie->Hit(this);
+        }
+    }
+
+    DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 2.0f, 0, 3.0f);
 }
 
 void AZombieCharacter::Interact()
@@ -84,7 +115,7 @@ void AZombieCharacter::SetInteractableObject()
     FCollisionQueryParams CollisionParams;
     CollisionParams.AddIgnoredActor(this);
     GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, CollisionQuery, CollisionParams);
-    
+
     AInteractableBase* Temp = Cast<AInteractableBase>(HitResult.GetActor());
     if (Interactable == nullptr && Temp)
     {
@@ -98,4 +129,26 @@ void AZombieCharacter::SetInteractableObject()
         Interactable = nullptr;
         OnInteractChanged.Broadcast(FString());
     }
+}
+
+void AZombieCharacter::IncrementPoints(uint16 Value)
+{
+    Points += Value;
+    UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+}
+
+bool AZombieCharacter::DecrementPoints(uint16 Value)
+{
+    if ((Points - Value) < 0)
+    {
+        return false;
+    }
+    else
+    {
+        Points -= Value;
+    }
+
+    UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+
+    return true;
 }

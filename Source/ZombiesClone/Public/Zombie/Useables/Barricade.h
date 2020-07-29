@@ -41,7 +41,7 @@ protected:
 
 protected:
     virtual void BeginPlay() override;
-    virtual void Use(ACharacterBase* Player) override;
+    virtual void Use(class AZombieCharacter* Player) override;
 
 public:
     uint8 GetAccessZone();

@@ -26,9 +26,13 @@ protected:
     UPROPERTY(EditDefaultsOnly)
     float InteractionRange;
 
+    UPROPERTY(EditDefaultsOnly) // set to replicate
+    int32 Points;
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+    virtual void OnFire() override;
 
 protected:
     void Interact();
@@ -38,4 +42,8 @@ protected:
     void Server_Interact_Implementation(class AInteractableBase* InteractingObject);
     
     void SetInteractableObject();
+
+public:
+    void IncrementPoints(uint16 Value);
+    bool DecrementPoints(uint16 Value);
 };

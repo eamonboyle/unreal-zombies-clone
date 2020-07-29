@@ -49,7 +49,7 @@ void AZombieGameMode::BeginPlay()
                 {
                     ZombieSpawnPoint->SetZone(LinkedBarricade->GetAccessZone());
                     ZombieSpawnPoints.Add(ZombieSpawnPoint);
-                    UE_LOG(LogTemp, Warning, TEXT("Zone Number: %d"), LinkedBarricade->GetAccessZone());
+                    // UE_LOG(LogTemp, Warning, TEXT("Zone Number: %d"), LinkedBarricade->GetAccessZone());
                 }
                 else
                 {
@@ -59,7 +59,7 @@ void AZombieGameMode::BeginPlay()
         }
     }
 
-    UE_LOG(LogTemp, Warning, TEXT("Zombie Spawn Points: %d"), ZombieSpawnPoints.Num());
+    // UE_LOG(LogTemp, Warning, TEXT("Zombie Spawn Points: %d"), ZombieSpawnPoints.Num());
 
     // start the zombie spawn timer
     GetWorld()->GetTimerManager().SetTimer(TZombieSpawnHandle, this, &AZombieGameMode::SpawnZombie, 2.0f, true);
