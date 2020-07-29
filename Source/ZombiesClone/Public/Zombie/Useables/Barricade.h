@@ -19,7 +19,13 @@ public:
 
 protected:
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
-    class UStaticMeshComponent* MeshComp;
+    class USkeletalMeshComponent* MeshComp;
+    
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    class UStaticMeshComponent* CollisionMesh;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    class UAnimationAsset* OpenAnimation;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     uint16 Cost;

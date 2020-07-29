@@ -4,13 +4,15 @@
 #include "ZombiesClone/Public/Zombie/Useables/Barricade.h"
 
 #include "Components/StaticMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "Net/UnrealNetwork.h"
 
 ABarricade::ABarricade()
 {
-    MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
-
+    MeshComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMeshComponent"));
     RootComponent = MeshComp;
+    CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+
     Cost = 500;
     UIMessage += FString(" [Cost: " + FString::FromInt(Cost) + "]");
     bIsUsed = false;
@@ -25,7 +27,13 @@ void ABarricade::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
 
 void ABarricade::OnRep_BarricadeUsed()
 {
-    SetActorEnableCollision(false);
+    // SetActorEnableCollision(false);
+
+    if (OpenAnimation != nullptr)
+    {
+        CollisionMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+        MeshComp->PlayAnimation(OpenAnimation, false);
+    }
 }
 
 void ABarricade::BeginPlay()
