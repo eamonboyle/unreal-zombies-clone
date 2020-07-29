@@ -42,6 +42,10 @@
                 <e p="ZombieBeaconHostObject.cpp" t="Include" />
                 <e p="ZombieMainMenuGameMode.cpp" t="Include" />
               </e>
+              <e p="Useables" t="Include">
+                <e p="Barricade.cpp" t="Include" />
+                <e p="InteractableBase.cpp" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Public" t="Include">
@@ -63,6 +67,10 @@
                 <e p="ZombieBeaconClient.h" t="Include" />
                 <e p="ZombieBeaconHostObject.h" t="Include" />
                 <e p="ZombieMainMenuGameMode.h" t="Include" />
+              </e>
+              <e p="Useables" t="Include">
+                <e p="Barricade.h" t="Include" />
+                <e p="InteractableBase.h" t="Include" />
               </e>
             </e>
           </e>
