@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "ZombiePlayerSpawnPoint.h"
+
 #include "ZombieGameMode.generated.h"
 
 /**
@@ -12,6 +14,8 @@
 UCLASS()
 class ZOMBIESCLONE_API AZombieGameMode : public AGameModeBase
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AZombieGameMode();
 };

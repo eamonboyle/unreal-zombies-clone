@@ -12,6 +12,15 @@
 UCLASS()
 class ZOMBIESCLONE_API AZombiePlayerSpawnPoint : public ATargetPoint
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AZombiePlayerSpawnPoint();
+
+protected:
+    bool bIsUsed;
+
+public:
+    bool IsUsed();
+    void SetUsed(bool Used);
 };

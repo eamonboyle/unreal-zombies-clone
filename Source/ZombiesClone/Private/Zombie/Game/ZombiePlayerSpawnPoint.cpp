@@ -3,3 +3,17 @@
 
 #include "ZombiesClone/Public/Zombie/Game/ZombiePlayerSpawnPoint.h"
 
+AZombiePlayerSpawnPoint::AZombiePlayerSpawnPoint()
+{
+    bIsUsed = false;
+}
+
+bool AZombiePlayerSpawnPoint::IsUsed()
+{
+    return bIsUsed;
+}
+
+void AZombiePlayerSpawnPoint::SetUsed(bool Used)
+{
+    bIsUsed = Used;
+}
