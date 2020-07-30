@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Sound/Zombies_-_Title_Soundtrack.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_ZombieCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_ZombieCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/HUD/W_HUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/HUD/W_HUD.uasset" afterDir="false" />
@@ -141,8 +142,8 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/WeaponBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/WeaponBase.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/Weapon1911.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Player/ZombieCharacter.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Player/ZombieCharacter.h" />
       </list>
     </option>
   </component>
@@ -593,7 +594,7 @@
       <workItem from="1595946382147" duration="7744000" />
       <workItem from="1595971748589" duration="4161000" />
       <workItem from="1596011604510" duration="36384000" />
-      <workItem from="1596100879198" duration="6759000" />
+      <workItem from="1596100879198" duration="7594000" />
     </task>
     <servers />
   </component>
