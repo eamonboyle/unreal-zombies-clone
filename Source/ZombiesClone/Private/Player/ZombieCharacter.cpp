@@ -53,7 +53,7 @@ void AZombieCharacter::OnFire()
     FCollisionResponseParams CollisionResponse;
     CollisionParams.AddIgnoredActor(this);
 
-    if (GetWorld()->LineTraceMultiByChannel(HitResults, Start, End, ECollisionChannel::ECC_Visibility, CollisionParams, CollisionResponse))
+    if (GetWorld()->LineTraceMultiByChannel(HitResults, Start, End, ECollisionChannel::ECC_GameTraceChannel2, CollisionParams, CollisionResponse))
     {
         for (FHitResult& Result : HitResults)
         {

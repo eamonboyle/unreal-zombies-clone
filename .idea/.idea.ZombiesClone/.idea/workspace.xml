@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -583,7 +584,7 @@
       <workItem from="1595864600195" duration="12939000" />
       <workItem from="1595946382147" duration="7744000" />
       <workItem from="1595971748589" duration="4161000" />
-      <workItem from="1596011604510" duration="36154000" />
+      <workItem from="1596011604510" duration="36384000" />
     </task>
     <servers />
   </component>
