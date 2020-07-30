@@ -2,6 +2,7 @@
 
 
 #include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
+#include "ZombiesClone/Public/Player/ZombiePlayerState.h"
 
 #include "Player/ZombieCharacter.h"
 
@@ -24,6 +25,9 @@ void AZombieBase::Hit(AZombieCharacter* Player)
 	// see where the shot hit, calculate points / damage based on the body part
 	if (HasAuthority() && Player != nullptr)
 	{
-		Player->IncrementPoints(100);
+		if (AZombiePlayerState* PState = Player->GetPlayerState<AZombiePlayerState>())
+		{
+			PState->IncrementPoints(100);
+		}
 	}
 }

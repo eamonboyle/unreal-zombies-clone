@@ -17,7 +17,6 @@ AZombieCharacter::AZombieCharacter()
 {
     Interactable = nullptr;
     InteractionRange = 200.f;
-    Points = 500;
 }
 
 // Called when the game starts or when spawned
@@ -28,13 +27,6 @@ void AZombieCharacter::BeginPlay()
     // setup the interact timer
     GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::SetInteractableObject, 0.2f,
                                            true);
-}
-
-void AZombieCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-{
-    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-    DOREPLIFETIME(AZombieCharacter, Points);
 }
 
 // Called to bind functionality to input
@@ -127,44 +119,4 @@ void AZombieCharacter::SetInteractableObject()
         Interactable = nullptr;
         NewInteractMessage.Broadcast(FString());
     }
-}
-
-void AZombieCharacter::OnRep_PointsChanged()
-{
-    NewPoints.Broadcast(Points);
-}
-
-void AZombieCharacter::IncrementPoints(uint16 Value)
-{
-    if (HasAuthority())
-    {
-        Points += Value;
-        OnRep_PointsChanged();
-        UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
-    }
-}
-
-bool AZombieCharacter::DecrementPoints(uint16 Value)
-{
-    if (HasAuthority())
-    {
-        if ((Points - Value) < 0)
-        {
-            return false;
-        }
-        else
-        {
-            Points -= Value;
-        }
-
-        OnRep_PointsChanged();
-        UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
-    }
-
-    return true;
-}
-
-int32 AZombieCharacter::GetPoints()
-{
-    return Points;
 }

@@ -4,6 +4,7 @@
 #include "ZombiesClone/Public/Zombie/Useables/Barricade.h"
 #include "ZombiesClone/Public/Zombie/Game/ZombieGameMode.h"
 #include "ZombiesClone/Public/Player/ZombieCharacter.h"
+#include "ZombiesClone/Public/Player/ZombiePlayerState.h"
 
 #include "Components/StaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -49,17 +50,26 @@ void ABarricade::BeginPlay()
 
 void ABarricade::Use(AZombieCharacter* Player)
 {
-    if (HasAuthority() && !bIsUsed && Player != nullptr && Player->DecrementPoints(Cost))
+    if (HasAuthority() && !bIsUsed && Player != nullptr)
     {
-        UE_LOG(LogTemp, Warning, TEXT("USING %s"), *ObjectName);
-
-        // play animation to move barricade
-        bIsUsed = true;
-        OnRep_BarricadeUsed();
-
-        if (AZombieGameMode* GM = GetWorld()->GetAuthGameMode<AZombieGameMode>())
+        if (AZombiePlayerState* PlayerState = Player->GetPlayerState<AZombiePlayerState>())
         {
-            GM->NewZoneActive(AccessZone);
+            // don't allow the player to purchase the barricade if it doesn't have enough points
+            if (!PlayerState->DecrementPoints(Cost))
+            {
+                return;
+            }
+            
+            UE_LOG(LogTemp, Warning, TEXT("USING %s"), *ObjectName);
+
+            // play animation to move barricade
+            bIsUsed = true;
+            OnRep_BarricadeUsed();
+
+            if (AZombieGameMode* GM = GetWorld()->GetAuthGameMode<AZombieGameMode>())
+            {
+                GM->NewZoneActive(AccessZone);
+            }
         }
     }
 }

@@ -26,6 +26,7 @@
             <e p="Player" t="Include">
               <e p="CharacterBase.cpp" t="Include" />
               <e p="ZombieCharacter.cpp" t="Include" />
+              <e p="ZombiePlayerState.cpp" t="Include" />
             </e>
             <e p="Zombie" t="Include">
               <e p="Enemy" t="Include">
@@ -55,6 +56,7 @@
             <e p="Player" t="Include">
               <e p="CharacterBase.h" t="Include" />
               <e p="ZombieCharacter.h" t="Include" />
+              <e p="ZombiePlayerState.h" t="Include" />
             </e>
             <e p="Zombie" t="Include">
               <e p="Enemy" t="Include">
@@ -98,6 +100,7 @@
       <e p="ZombiesClone.png" t="Include" />
       <e p="ZombiesClone.sln" t="IncludeFlat" />
       <e p="ZombiesClone.uproject" t="Include" />
+      <e p="ZombiesClone.uproject - Shortcut.lnk" t="Include" />
     </e>
     <e p="F:\Epic Games\UE_4.25\Engine\Config" t="Include">
       <e p="Android" t="Include">
