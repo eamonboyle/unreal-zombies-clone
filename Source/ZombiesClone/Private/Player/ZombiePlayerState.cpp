@@ -25,12 +25,15 @@ void AZombiePlayerState::OnRep_PointsChanged()
 
 void AZombiePlayerState::IncrementPoints(uint16 Value)
 {
+    Points += Value;
+
     if (HasAuthority())
     {
-        Points += Value;
         OnRep_PointsChanged();
-        UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
     }
+
+    NewPoints.Broadcast(Points);
+    UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
 }
 
 bool AZombiePlayerState::DecrementPoints(uint16 Value)

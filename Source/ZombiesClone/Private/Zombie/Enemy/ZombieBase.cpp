@@ -23,7 +23,7 @@ void AZombieBase::BeginPlay()
 void AZombieBase::Hit(AZombieCharacter* Player)
 {
 	// see where the shot hit, calculate points / damage based on the body part
-	if (HasAuthority() && Player != nullptr)
+	if (Player != nullptr)
 	{
 		if (AZombiePlayerState* PState = Player->GetPlayerState<AZombiePlayerState>())
 		{
