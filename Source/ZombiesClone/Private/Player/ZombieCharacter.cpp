@@ -111,19 +111,20 @@ void AZombieCharacter::SetInteractableObject()
     {
         UE_LOG(LogTemp, Warning, TEXT("IS NOW A VALID PTR"));
         Interactable = Temp;
-        OnInteractChanged.Broadcast(Interactable->GetUIMessage());
+        NewInteractMessage.Broadcast(Interactable->GetUIMessage());
     }
     else if (Interactable && Temp == nullptr)
     {
         UE_LOG(LogTemp, Warning, TEXT("IS NOW A NULL PTR"));
         Interactable = nullptr;
-        OnInteractChanged.Broadcast(FString());
+        NewInteractMessage.Broadcast(FString());
     }
 }
 
 void AZombieCharacter::IncrementPoints(uint16 Value)
 {
     Points += Value;
+    NewPoints.Broadcast(Points);
     UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
 }
 
@@ -138,7 +139,13 @@ bool AZombieCharacter::DecrementPoints(uint16 Value)
         Points -= Value;
     }
 
+    NewPoints.Broadcast(Points);
     UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
 
     return true;
+}
+
+int32 AZombieCharacter::GetPoints()
+{
+    return Points;
 }
