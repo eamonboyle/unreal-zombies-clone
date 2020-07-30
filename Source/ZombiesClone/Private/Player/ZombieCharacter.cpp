@@ -48,19 +48,30 @@ void AZombieCharacter::OnFire()
     FVector Rotation = GetFirstPersonCameraComponent()->GetComponentRotation().Vector();
     FVector End = Start + Rotation * 10000.0f;
 
-    FHitResult HitResult;
-    FCollisionObjectQueryParams CollisionQuery;
+    TArray<FHitResult> HitResults;
     FCollisionQueryParams CollisionParams;
+    FCollisionResponseParams CollisionResponse;
     CollisionParams.AddIgnoredActor(this);
-    
-    if (GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, CollisionQuery, CollisionParams))
+
+    if (GetWorld()->LineTraceMultiByChannel(HitResults, Start, End, ECollisionChannel::ECC_Visibility, CollisionParams, CollisionResponse))
     {
-        if (AZombieBase* Zombie = Cast<AZombieBase>(HitResult.GetActor()))
+        for (FHitResult& Result : HitResults)
         {
-            UE_LOG(LogTemp, Warning, TEXT("ZOMBIE HIT %s"), *Zombie->GetName());
-            Zombie->Hit(this);
+            if (AActor* HitActor = Result.GetActor())
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Hit Actor Name: %s"), *HitActor->GetName());
+            }
         }
     }
+    //
+    // if (GetWorld()->LineTraceSingleByObjectType(HitResult, Start, End, CollisionQuery, CollisionParams))
+    // {
+    //     if (AZombieBase* Zombie = Cast<AZombieBase>(HitResult.GetActor()))
+    //     {
+    //         UE_LOG(LogTemp, Warning, TEXT("ZOMBIE HIT %s"), *Zombie->GetName());
+    //         Zombie->Hit(this);
+    //     }
+    // }
 
     DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 2.0f, 0, 3.0f);
 }

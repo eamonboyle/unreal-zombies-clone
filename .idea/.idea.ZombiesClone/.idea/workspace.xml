@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Player/ABP_FPSArms.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_CharacterBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_CharacterBase.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Player/BP_ZombieCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Player/BP_ZombieCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/CharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/CharacterBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Player/CharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Player/CharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,9 +131,9 @@
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/WeaponBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/WeaponBase.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/Weapon1911.cpp" />
-        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Player/CharacterBase.h" />
         <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/CharacterBase.cpp" />
+        <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Player/ZombieCharacter.cpp" />
       </list>
     </option>
   </component>
@@ -589,7 +583,7 @@
       <workItem from="1595864600195" duration="12939000" />
       <workItem from="1595946382147" duration="7744000" />
       <workItem from="1595971748589" duration="4161000" />
-      <workItem from="1596011604510" duration="35669000" />
+      <workItem from="1596011604510" duration="36154000" />
     </task>
     <servers />
   </component>
