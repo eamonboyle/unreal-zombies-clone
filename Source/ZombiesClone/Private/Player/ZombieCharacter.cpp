@@ -3,14 +3,14 @@
 
 #include "ZombiesClone/Public/Player/ZombieCharacter.h"
 #include "ZombiesClone/Public/Zombie/Useables/Weapon1911.h"
-
-#include "DrawDebugHelpers.h"
 #include "ZombiesClone/Public/Zombie/Useables/InteractableBase.h"
 #include "ZombiesClone/Public/Zombie/Enemy/ZombieBase.h"
 
+#include "DrawDebugHelpers.h"
 #include "TimerManager.h"
 #include "Engine/World.h"
 #include "Camera/CameraComponent.h"
+#include "Animation/AnimInstance.h"
 
 AZombieCharacter::AZombieCharacter()
 {
@@ -45,6 +45,17 @@ void AZombieCharacter::OnFire()
     if (CurrentWeapon != nullptr)
     {
         CurrentWeapon->Fire(this);
+        
+        if (UAnimMontage* FireMontage = CurrentWeapon->GetFireAnimMontage())
+        {
+            UAnimInstance* AnimInstance = Mesh1P->GetAnimInstance();
+
+            if (AnimInstance != nullptr)
+            {
+                UE_LOG(LogTemp, Warning, TEXT("Got the Anim Instance on the M1911"));
+                AnimInstance->Montage_Play(FireMontage, 1.f);
+            }
+        }
     }
 }
 

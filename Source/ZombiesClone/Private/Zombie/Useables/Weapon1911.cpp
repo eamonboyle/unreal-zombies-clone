@@ -23,19 +23,14 @@ TArray<FHitResult> AWeapon1911::Fire(AZombieCharacter* ShootingPlayer)
 {
     UE_LOG(LogTemp, Warning, TEXT("Shooting 1911"));
 
-    // send out a ray trace in front of the character to see if it's shooting a zombie
-    FVector Start = WeaponMesh->GetSocketLocation(FName("muzzleSocket"));
-    FVector Rotation = WeaponMesh->GetSocketQuaternion(FName("muzzleSocket")).Vector();
-    FVector End = Start + Rotation * 10000.0f;
+    if (FireAnimation)
+    {
+        WeaponMesh->PlayAnimation(FireAnimation, false);
+    }
 
-    TArray<FHitResult> HitResults;
-    FCollisionQueryParams CollisionParams;
-    FCollisionResponseParams CollisionResponse;
-    CollisionParams.AddIgnoredActor(this);
-    CollisionParams.AddIgnoredActor(ShootingPlayer);
-
-    if (GetWorld()->LineTraceMultiByChannel(HitResults, Start, End, ECollisionChannel::ECC_GameTraceChannel2,
-                                            CollisionParams, CollisionResponse))
+    TArray<FHitResult> HitResults = PerformLineTrace(ShootingPlayer);
+    
+    if (HitResults.Num() > 0)
     {
         for (FHitResult& Result : HitResults)
         {
@@ -50,8 +45,6 @@ TArray<FHitResult> AWeapon1911::Fire(AZombieCharacter* ShootingPlayer)
             }
         }
     }
-
-    DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 2.0f, 0, 3.0f);
 
     return HitResults;
 }

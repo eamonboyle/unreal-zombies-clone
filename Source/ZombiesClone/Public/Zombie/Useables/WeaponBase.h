@@ -23,6 +23,9 @@ protected:
     class UAnimationAsset* FireAnimation;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    class UAnimMontage* FPSArmsFireMontage;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     class UAnimationAsset* ReloadAnimation;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
@@ -30,6 +33,9 @@ protected:
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     int32 BaseDamage;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    float WeaponRange;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     int32 WeaponMaxAmmo;
@@ -45,10 +51,14 @@ protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
 
+    TArray<FHitResult> PerformLineTrace(class AZombieCharacter* ShootingPlayer);
+
 public:
     virtual TArray<FHitResult> Fire(class AZombieCharacter* ShootingPlayer);
     virtual void Reload();
 
     /** first element is magazine ammo, second element is total ammo */
     TArray<int32> GetCurrentAmmo();
+
+    class UAnimMontage* GetFireAnimMontage();
 };
