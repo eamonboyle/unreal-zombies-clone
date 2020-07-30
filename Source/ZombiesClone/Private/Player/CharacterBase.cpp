@@ -9,6 +9,7 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
 #include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 // Sets default values
 ACharacterBase::ACharacterBase()
@@ -51,16 +52,37 @@ void ACharacterBase::BeginPlay()
     {
         // attach weapon to socket s_weaponSocket
         UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
-        CurrentWeapon->AttachToComponent(Mesh1P, FAttachmentTransformRules::SnapToTargetIncludingScale,
-                                  FName("s_weaponSocket"));
-
         WeaponArray.Add(CurrentWeapon);
+        OnRep_AttachWeapon();
     }
+}
 
+void ACharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-    //Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
-    // FP_Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true),
-    // TEXT("GripPoint"));
+    DOREPLIFETIME(ACharacterBase, CurrentWeapon);
+}
+
+void ACharacterBase::OnRep_AttachWeapon()
+{
+    if (CurrentWeapon != nullptr)
+    {
+        if (IsLocallyControlled())
+        {
+            // attach weapon to socket s_weaponSocket
+            UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
+            CurrentWeapon->AttachToComponent(Mesh1P, FAttachmentTransformRules::SnapToTargetNotIncludingScale,
+                                             FName("s_weaponSocket"));
+        }
+        else
+        {
+            // attach weapon to socket s_weaponSocket
+            UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
+            CurrentWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale,
+                                             FName("s_weaponSocket"));
+        }
+    }
 }
 
 // Called to bind functionality to input

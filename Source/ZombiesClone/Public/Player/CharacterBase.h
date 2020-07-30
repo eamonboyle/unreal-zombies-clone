@@ -28,7 +28,11 @@ protected:
     TSubclassOf<class AWeaponBase> StartingWeaponClass;
 
     /** the characters weapon */
+    UPROPERTY(ReplicatedUsing = OnRep_AttachWeapon)
     AWeaponBase* CurrentWeapon;
+    UFUNCTION()
+    void OnRep_AttachWeapon();
+    
     int32 WeaponIndex;
     TArray<AWeaponBase*> WeaponArray;
 

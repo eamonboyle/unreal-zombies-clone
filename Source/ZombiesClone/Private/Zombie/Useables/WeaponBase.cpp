@@ -12,6 +12,9 @@
 AWeaponBase::AWeaponBase()
 {
     WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
+    RootComponent = WeaponMesh;
+
+    SetReplicates(true);
 
     WeaponName = "Default";
     BaseDamage = 100;
