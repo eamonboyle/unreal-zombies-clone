@@ -30,8 +30,10 @@ protected:
     UPROPERTY(EditDefaultsOnly)
     float InteractionRange;
 
-    UPROPERTY(EditDefaultsOnly) // set to replicate
+    UPROPERTY(ReplicatedUsing = OnRep_PointsChanged, EditDefaultsOnly) // set to replicate
     int32 Points;
+    UFUNCTION()
+    void OnRep_PointsChanged();
 
 protected:
     virtual void BeginPlay() override;

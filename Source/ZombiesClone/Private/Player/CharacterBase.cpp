@@ -46,14 +46,21 @@ void ACharacterBase::BeginPlay()
 {
     Super::BeginPlay();
 
-    // spawn weapon using StartingWeaponClass
-    CurrentWeapon = GetWorld()->SpawnActor<AWeaponBase>(StartingWeaponClass);
-    if (CurrentWeapon != nullptr)
+    if (HasAuthority())
     {
-        // attach weapon to socket s_weaponSocket
-        UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
-        WeaponArray.Add(CurrentWeapon);
-        OnRep_AttachWeapon();
+        // spawn weapon using StartingWeaponClass
+        FActorSpawnParameters SpawnParameters;
+        SpawnParameters.Owner = this;
+        
+        CurrentWeapon = GetWorld()->SpawnActor<AWeaponBase>(StartingWeaponClass, SpawnParameters);
+        if (CurrentWeapon != nullptr)
+        {
+            // attach weapon to socket s_weaponSocket
+            UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
+            
+            WeaponArray.Add(CurrentWeapon);
+            OnRep_AttachWeapon();
+        }
     }
 }
 

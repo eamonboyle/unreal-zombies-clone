@@ -11,6 +11,7 @@
 #include "Engine/World.h"
 #include "Camera/CameraComponent.h"
 #include "Animation/AnimInstance.h"
+#include "Net/UnrealNetwork.h"
 
 AZombieCharacter::AZombieCharacter()
 {
@@ -27,6 +28,13 @@ void AZombieCharacter::BeginPlay()
     // setup the interact timer
     GetWorld()->GetTimerManager().SetTimer(TInteractTimerHandle, this, &AZombieCharacter::SetInteractableObject, 0.2f,
                                            true);
+}
+
+void AZombieCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME(AZombieCharacter, Points);
 }
 
 // Called to bind functionality to input
@@ -121,26 +129,37 @@ void AZombieCharacter::SetInteractableObject()
     }
 }
 
+void AZombieCharacter::OnRep_PointsChanged()
+{
+    NewPoints.Broadcast(Points);
+}
+
 void AZombieCharacter::IncrementPoints(uint16 Value)
 {
-    Points += Value;
-    NewPoints.Broadcast(Points);
-    UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+    if (HasAuthority())
+    {
+        Points += Value;
+        OnRep_PointsChanged();
+        UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+    }
 }
 
 bool AZombieCharacter::DecrementPoints(uint16 Value)
 {
-    if ((Points - Value) < 0)
+    if (HasAuthority())
     {
-        return false;
-    }
-    else
-    {
-        Points -= Value;
-    }
+        if ((Points - Value) < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Points -= Value;
+        }
 
-    NewPoints.Broadcast(Points);
-    UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+        OnRep_PointsChanged();
+        UE_LOG(LogTemp, Warning, TEXT("Points: %d"), Points);
+    }
 
     return true;
 }
