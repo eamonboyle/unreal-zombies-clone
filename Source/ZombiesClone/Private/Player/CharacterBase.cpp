@@ -46,12 +46,15 @@ void ACharacterBase::BeginPlay()
     Super::BeginPlay();
 
     // spawn weapon using StartingWeaponClass
-    if (AWeaponBase* Weapon = GetWorld()->SpawnActor<AWeaponBase>(StartingWeaponClass))
+    CurrentWeapon = GetWorld()->SpawnActor<AWeaponBase>(StartingWeaponClass);
+    if (CurrentWeapon != nullptr)
     {
         // attach weapon to socket s_weaponSocket
         UE_LOG(LogTemp, Warning, TEXT("Spawned and attempted to attach weapon to hand"));
-        Weapon->AttachToComponent(Mesh1P, FAttachmentTransformRules::SnapToTargetIncludingScale,
+        CurrentWeapon->AttachToComponent(Mesh1P, FAttachmentTransformRules::SnapToTargetIncludingScale,
                                   FName("s_weaponSocket"));
+
+        WeaponArray.Add(CurrentWeapon);
     }
 
 

@@ -11,6 +11,7 @@ AWeaponBase::AWeaponBase()
     WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
     
     WeaponName = "Default";
+    BaseDamage = 100;
     WeaponMaxAmmo = 255;
     MagazineMaxAmmo = 30;
     CurrentTotalAmmo = WeaponMaxAmmo;
@@ -23,8 +24,9 @@ void AWeaponBase::BeginPlay()
     Super::BeginPlay();
 }
 
-void AWeaponBase::Fire()
+TArray<FHitResult> AWeaponBase::Fire(AZombieCharacter* ShootingPlayer)
 {
+    return TArray<FHitResult>();
 }
 
 void AWeaponBase::Reload()

@@ -29,6 +29,9 @@ protected:
     FString WeaponName;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
+    int32 BaseDamage;
+
+    UPROPERTY(EditAnywhere, Category = "Zombie Settings")
     int32 WeaponMaxAmmo;
 
     UPROPERTY(EditAnywhere, Category = "Zombie Settings")
@@ -43,7 +46,7 @@ protected:
     virtual void BeginPlay() override;
 
 public:
-    virtual void Fire();
+    virtual TArray<FHitResult> Fire(class AZombieCharacter* ShootingPlayer);
     virtual void Reload();
 
     /** first element is magazine ammo, second element is total ammo */
