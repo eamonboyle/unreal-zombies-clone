@@ -85,9 +85,8 @@ bool AZombieCharacter::Server_Interact_Validate(AInteractableBase* InteractingOb
 void AZombieCharacter::Server_Interact_Implementation(AInteractableBase* InteractingObject)
 {
     float Distance = GetDistanceTo(InteractingObject);
-    UE_LOG(LogTemp, Warning, TEXT("DISTANCE: %f - %f"), Distance, InteractionRange + 30.f);
 
-    if (Distance < InteractionRange + 30.f)
+    if (Distance < InteractionRange + 80.f)
     {
         InteractingObject->Use(this);
     }

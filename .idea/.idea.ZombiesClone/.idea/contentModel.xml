@@ -1,107 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\blaow\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\blaow\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\ReSharperHost\v202\SolutionCaches\_ZombiesClone.1190239319.00" t="ExcludeRecursive" />
-    <e p="C:\Users\blaow\OneDrive\Documents\Unreal\ZombiesClone" t="IncludeFlat">
-      <e p=".gitignore" t="Include" />
-      <e p="Config" t="Include">
-        <e p="DefaultEditor.ini" t="Include" />
-        <e p="DefaultEditorPerProjectUserSettings.ini" t="Include" />
-        <e p="DefaultEngine.ini" t="Include" />
-        <e p="DefaultGame.ini" t="Include" />
-        <e p="DefaultInput.ini" t="Include" />
-      </e>
-      <e p="Engine" t="Include" />
-      <e p="Games" t="Include" />
-      <e p="Intermediate\Build\Unused" t="ExcludeRecursive" />
-      <e p="Intermediate\ProjectFiles" t="IncludeRecursive">
-        <e p="UE4.vcxproj" t="IncludeRecursive" />
-        <e p="ZombiesClone.vcxproj" t="IncludeRecursive" />
-      </e>
-      <e p="packages" t="ExcludeRecursive" />
-      <e p="Source" t="Include">
-        <e p="ZombiesClone" t="Include">
-          <e p="Private" t="Include">
-            <e p="Player" t="Include">
-              <e p="CharacterBase.cpp" t="Include" />
-              <e p="ZombieCharacter.cpp" t="Include" />
-              <e p="ZombiePlayerState.cpp" t="Include" />
-            </e>
-            <e p="Zombie" t="Include">
-              <e p="Enemy" t="Include">
-                <e p="ZombieBase.cpp" t="Include" />
-              </e>
-              <e p="Game" t="Include">
-                <e p="ZombieGameInstanceBase.cpp" t="Include" />
-                <e p="ZombieGameMode.cpp" t="Include" />
-                <e p="ZombieGameState.cpp" t="Include" />
-                <e p="ZombiePlayerSpawnPoint.cpp" t="Include" />
-                <e p="ZombieSpawnPoint.cpp" t="Include" />
-              </e>
-              <e p="MainMenu" t="Include">
-                <e p="ZombieBeaconClient.cpp" t="Include" />
-                <e p="ZombieBeaconHostObject.cpp" t="Include" />
-                <e p="ZombieMainMenuGameMode.cpp" t="Include" />
-              </e>
-              <e p="Useables" t="Include">
-                <e p="Barricade.cpp" t="Include" />
-                <e p="InteractableBase.cpp" t="Include" />
-                <e p="Weapon1911.cpp" t="Include" />
-                <e p="WeaponBase.cpp" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Public" t="Include">
-            <e p="Player" t="Include">
-              <e p="CharacterBase.h" t="Include" />
-              <e p="ZombieCharacter.h" t="Include" />
-              <e p="ZombiePlayerState.h" t="Include" />
-            </e>
-            <e p="Zombie" t="Include">
-              <e p="Enemy" t="Include">
-                <e p="ZombieBase.h" t="Include" />
-              </e>
-              <e p="Game" t="Include">
-                <e p="ZombieGameInstanceBase.h" t="Include" />
-                <e p="ZombieGameMode.h" t="Include" />
-                <e p="ZombieGameState.h" t="Include" />
-                <e p="ZombiePlayerSpawnPoint.h" t="Include" />
-                <e p="ZombieSpawnPoint.h" t="Include" />
-              </e>
-              <e p="MainMenu" t="Include">
-                <e p="ZombieBeaconClient.h" t="Include" />
-                <e p="ZombieBeaconHostObject.h" t="Include" />
-                <e p="ZombieMainMenuGameMode.h" t="Include" />
-              </e>
-              <e p="Useables" t="Include">
-                <e p="Barricade.h" t="Include" />
-                <e p="InteractableBase.h" t="Include" />
-                <e p="Weapon1911.h" t="Include" />
-                <e p="WeaponBase.h" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="ZombiesClone.Build.cs" t="Include" />
-          <e p="ZombiesClone.cpp" t="Include" />
-          <e p="ZombiesClone.h" t="Include" />
-          <e p="ZombiesCloneGameMode.cpp" t="Include" />
-          <e p="ZombiesCloneGameMode.h" t="Include" />
-          <e p="ZombiesCloneHUD.cpp" t="Include" />
-          <e p="ZombiesCloneHUD.h" t="Include" />
-          <e p="ZombiesCloneProjectile.cpp" t="Include" />
-          <e p="ZombiesCloneProjectile.h" t="Include" />
-        </e>
-        <e p="ZombiesClone.Target.cs" t="Include" />
-        <e p="ZombiesCloneEditor.Target.cs" t="Include" />
-      </e>
-      <e p="Visualizers" t="Include" />
-      <e p="Zombies-Icon.png" t="Include" />
-      <e p="ZombiesClone.png" t="Include" />
-      <e p="ZombiesClone.sln" t="IncludeFlat" />
-      <e p="ZombiesClone.uproject" t="Include" />
-      <e p="ZombiesClone.uproject - Shortcut.lnk" t="Include" />
-    </e>
+    <e p="C:\Users\Eamon\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Eamon\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ZombiesClone.-775336429.01" t="ExcludeRecursive" />
     <e p="F:\Epic Games\UE_4.25\Engine\Config" t="Include">
       <e p="Android" t="Include">
         <e p="AndroidEngine.ini" t="Include" />
@@ -44220,6 +44121,105 @@
       </e>
       <e p="UE4Editor.Target.cs" t="Include" />
       <e p="UE4Game.Target.cs" t="Include" />
+    </e>
+    <e p="F:\Unreal\ZombiesClone" t="IncludeFlat">
+      <e p=".gitignore" t="Include" />
+      <e p="Config" t="Include">
+        <e p="DefaultEditor.ini" t="Include" />
+        <e p="DefaultEditorPerProjectUserSettings.ini" t="Include" />
+        <e p="DefaultEngine.ini" t="Include" />
+        <e p="DefaultGame.ini" t="Include" />
+        <e p="DefaultInput.ini" t="Include" />
+      </e>
+      <e p="Engine" t="Include" />
+      <e p="Games" t="Include" />
+      <e p="Intermediate\Build\Unused" t="ExcludeRecursive" />
+      <e p="Intermediate\ProjectFiles" t="IncludeRecursive">
+        <e p="UE4.vcxproj" t="IncludeRecursive" />
+        <e p="ZombiesClone.vcxproj" t="IncludeRecursive" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Source" t="Include">
+        <e p="ZombiesClone" t="Include">
+          <e p="Private" t="Include">
+            <e p="Player" t="Include">
+              <e p="CharacterBase.cpp" t="Include" />
+              <e p="ZombieCharacter.cpp" t="Include" />
+              <e p="ZombiePlayerState.cpp" t="Include" />
+            </e>
+            <e p="Zombie" t="Include">
+              <e p="Enemy" t="Include">
+                <e p="ZombieBase.cpp" t="Include" />
+              </e>
+              <e p="Game" t="Include">
+                <e p="ZombieGameInstanceBase.cpp" t="Include" />
+                <e p="ZombieGameMode.cpp" t="Include" />
+                <e p="ZombieGameState.cpp" t="Include" />
+                <e p="ZombiePlayerSpawnPoint.cpp" t="Include" />
+                <e p="ZombieSpawnPoint.cpp" t="Include" />
+              </e>
+              <e p="MainMenu" t="Include">
+                <e p="ZombieBeaconClient.cpp" t="Include" />
+                <e p="ZombieBeaconHostObject.cpp" t="Include" />
+                <e p="ZombieMainMenuGameMode.cpp" t="Include" />
+              </e>
+              <e p="Useables" t="Include">
+                <e p="Barricade.cpp" t="Include" />
+                <e p="InteractableBase.cpp" t="Include" />
+                <e p="Weapon1911.cpp" t="Include" />
+                <e p="WeaponBase.cpp" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Public" t="Include">
+            <e p="Player" t="Include">
+              <e p="CharacterBase.h" t="Include" />
+              <e p="ZombieCharacter.h" t="Include" />
+              <e p="ZombiePlayerState.h" t="Include" />
+            </e>
+            <e p="Zombie" t="Include">
+              <e p="Enemy" t="Include">
+                <e p="ZombieBase.h" t="Include" />
+              </e>
+              <e p="Game" t="Include">
+                <e p="ZombieGameInstanceBase.h" t="Include" />
+                <e p="ZombieGameMode.h" t="Include" />
+                <e p="ZombieGameState.h" t="Include" />
+                <e p="ZombiePlayerSpawnPoint.h" t="Include" />
+                <e p="ZombieSpawnPoint.h" t="Include" />
+              </e>
+              <e p="MainMenu" t="Include">
+                <e p="ZombieBeaconClient.h" t="Include" />
+                <e p="ZombieBeaconHostObject.h" t="Include" />
+                <e p="ZombieMainMenuGameMode.h" t="Include" />
+              </e>
+              <e p="Useables" t="Include">
+                <e p="Barricade.h" t="Include" />
+                <e p="InteractableBase.h" t="Include" />
+                <e p="Weapon1911.h" t="Include" />
+                <e p="WeaponBase.h" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="ZombiesClone.Build.cs" t="Include" />
+          <e p="ZombiesClone.cpp" t="Include" />
+          <e p="ZombiesClone.h" t="Include" />
+          <e p="ZombiesCloneGameMode.cpp" t="Include" />
+          <e p="ZombiesCloneGameMode.h" t="Include" />
+          <e p="ZombiesCloneHUD.cpp" t="Include" />
+          <e p="ZombiesCloneHUD.h" t="Include" />
+          <e p="ZombiesCloneProjectile.cpp" t="Include" />
+          <e p="ZombiesCloneProjectile.h" t="Include" />
+        </e>
+        <e p="ZombiesClone.Target.cs" t="Include" />
+        <e p="ZombiesCloneEditor.Target.cs" t="Include" />
+      </e>
+      <e p="Visualizers" t="Include" />
+      <e p="Zombies-Icon.png" t="Include" />
+      <e p="ZombiesClone.png" t="Include" />
+      <e p="ZombiesClone.sln" t="IncludeFlat" />
+      <e p="ZombiesClone.uproject" t="Include" />
+      <e p="ZombiesClone.uproject - Shortcut.lnk" t="Include" />
     </e>
   </component>
 </project>
