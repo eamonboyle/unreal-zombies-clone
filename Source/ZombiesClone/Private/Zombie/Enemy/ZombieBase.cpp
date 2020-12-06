@@ -20,14 +20,50 @@ void AZombieBase::BeginPlay()
 	Super::BeginPlay();	
 }
 
-void AZombieBase::Hit(AZombieCharacter* Player)
+uint8 AZombieBase::GetPointsForKill(FString BoneName)
+{
+	if (BoneName.Contains(FString("l")) || BoneName.Contains(FString("r")))
+	{
+		// limb hit
+		UE_LOG(LogTemp, Warning, TEXT("Hit Bone: Limb"));
+		return 50;
+	}
+	else if (BoneName.Contains(FString("spine")) || BoneName.Contains(FString("pelvis")))
+	{
+		// torso hit
+		UE_LOG(LogTemp, Warning, TEXT("Hit Bone: Torso"));
+		return 60;
+	}
+	else if (BoneName.Equals(FString("neck_01")))
+	{
+		// neck hit
+		UE_LOG(LogTemp, Warning, TEXT("Hit Bone: Neck"));
+		return 70;
+	}
+	else if (BoneName.Equals(FString("head")))
+	{
+		// head hit
+		UE_LOG(LogTemp, Warning, TEXT("Hit Bone: Head"));
+		return 100;
+	}
+
+	return 0;
+}
+
+void AZombieBase::Hit(AZombieCharacter* Player, FHitResult HitResult)
 {
 	// see where the shot hit, calculate points / damage based on the body part
 	if (Player != nullptr)
 	{
 		if (AZombiePlayerState* PState = Player->GetPlayerState<AZombiePlayerState>())
 		{
-			PState->IncrementPoints(100);
+			FString BoneName = HitResult.BoneName.ToString();
+			if (BoneName == FString("None"))
+			{
+				return;
+			}
+			
+			PState->IncrementPoints(GetPointsForKill(BoneName));
 		}
 	}
 }

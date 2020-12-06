@@ -23,15 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="000cbdd2-6cd4-44d4-b579-2ac01b967849" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Zombie/BP_Zombie_Old.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ZombiesClone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/NaziZombies/Nacht_der_Untoten/map_Nacht_der_Untoten.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/NaziZombies/Nacht_der_Untoten/map_Nacht_der_Untoten.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Game/ZombieGameInstanceBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombiesClone.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/ZombiesClone.uproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Zombie/BB_Zombie.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Zombie/BB_Zombie.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Zombie/BP_Zombie.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Zombie/BP_Zombie.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/Weapon1911.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/Weapon1911.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/WeaponBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/WeaponBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/Weapon1911.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/Weapon1911.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/WeaponBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/WeaponBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +88,12 @@
       <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Game/ZombieGameInstanceBase.h" />
       <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/MainMenu/ZombieBeaconHostObject.cpp" />
       <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/MainMenu/ZombieBeaconHostObject.h" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Enemy/ZombieBase.h" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Enemy/ZombieBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/WeaponBase.h" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/WeaponBase.cpp" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Public/Zombie/Useables/Weapon1911.h" />
+      <option value="$PROJECT_DIR$/Source/ZombiesClone/Private/Zombie/Useables/Weapon1911.cpp" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1fCFLHx1Rv5K8scbpLRo4vX8MKF" />
@@ -544,7 +552,7 @@
       <workItem from="1607268856380" duration="127000" />
       <workItem from="1607269163685" duration="15000" />
       <workItem from="1607269230091" duration="100000" />
-      <workItem from="1607274103251" duration="1736000" />
+      <workItem from="1607274103251" duration="5026000" />
     </task>
     <servers />
   </component>

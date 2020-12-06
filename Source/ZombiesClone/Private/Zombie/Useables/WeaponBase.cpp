@@ -74,12 +74,12 @@ TArray<FHitResult> AWeaponBase::PerformLineTrace(FVector MuzzleLocation, FRotato
     return HitResults;
 }
 
-bool AWeaponBase::Server_Fire_Validate(FVector MuzzleLocation, FRotator MuzzleRotation)
+bool AWeaponBase::Server_Fire_Validate(const TArray<FHitResult>& HitResults)
 {
     return true;
 }
 
-void AWeaponBase::Server_Fire_Implementation(FVector MuzzleLocation, FRotator MuzzleRotation)
+void AWeaponBase::Server_Fire_Implementation(const TArray<FHitResult>& HitResults)
 {
 }
 

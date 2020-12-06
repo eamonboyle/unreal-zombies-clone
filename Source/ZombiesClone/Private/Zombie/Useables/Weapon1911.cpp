@@ -19,7 +19,7 @@ AWeapon1911::AWeapon1911()
     CurrentMagazineAmmo = MagazineMaxAmmo;
 }
 
-void AWeapon1911::Server_Fire_Implementation(FVector MuzzleLocation, FRotator MuzzleRotation)
+void AWeapon1911::Server_Fire_Implementation(const TArray<FHitResult>& HitResults)
 {
     UE_LOG(LogTemp, Warning, TEXT("SERVER FIRE FUNCTION"));
 
@@ -29,13 +29,12 @@ void AWeapon1911::Server_Fire_Implementation(FVector MuzzleLocation, FRotator Mu
         WeaponMesh->PlayAnimation(FireAnimation, false);
     }
 
-    // get the hit results from the line tracing in the base class
-    TArray<FHitResult> HitResults = PerformLineTrace(MuzzleLocation, MuzzleRotation);
-
     if (HitResults.Num() > 0)
     {
-        for (FHitResult& Result : HitResults)
+        for (FHitResult Result : HitResults)
         {
+            // TODO: Checking to prevent cheating
+            
             if (AActor* HitActor = Result.GetActor())
             {
                 // if we have hit a zombie, run the Hit function in the Zombie Class
@@ -43,7 +42,7 @@ void AWeapon1911::Server_Fire_Implementation(FVector MuzzleLocation, FRotator Mu
                 {
                     if (AZombieCharacter* Player = Cast<AZombieCharacter>(GetOwner()))
                     {
-                        Zombie->Hit(Player);
+                        Zombie->Hit(Player, Result);
                     }
                 }
 
@@ -71,13 +70,13 @@ TArray<FHitResult> AWeapon1911::Fire(AZombieCharacter* ShootingPlayer)
         if (HitResults.Num() > 0)
         {
             for (FHitResult& Result : HitResults)
-            {
+            {                
                 if (AActor* HitActor = Result.GetActor())
                 {
                     // if we have hit a zombie, run the Hit function in the Zombie Class
                     if (AZombieBase* Zombie = Cast<AZombieBase>(HitActor))
                     {
-                        Zombie->Hit(ShootingPlayer);
+                        Zombie->Hit(ShootingPlayer, Result);
                     }
 
                     UE_LOG(LogTemp, Warning, TEXT("Actor Hit: %s"), *HitActor->GetName());
@@ -99,7 +98,7 @@ TArray<FHitResult> AWeapon1911::Fire(AZombieCharacter* ShootingPlayer)
                     // if we have hit a zombie, run the Hit function in the Zombie Class
                     if (AZombieBase* Zombie = Cast<AZombieBase>(HitActor))
                     {
-                        Zombie->Hit(ShootingPlayer);
+                        Zombie->Hit(ShootingPlayer, Result);
                     }
 
                     UE_LOG(LogTemp, Warning, TEXT("Actor Hit: %s"), *HitActor->GetName());
@@ -107,8 +106,7 @@ TArray<FHitResult> AWeapon1911::Fire(AZombieCharacter* ShootingPlayer)
             }
         }
 
-        Server_Fire(WeaponMesh->GetSocketLocation(FName("muzzleSocket")),
-                    WeaponMesh->GetSocketRotation(FName("muzzleSocket")));
+        Server_Fire(HitResults);
     }
 
     return TArray<FHitResult>();
