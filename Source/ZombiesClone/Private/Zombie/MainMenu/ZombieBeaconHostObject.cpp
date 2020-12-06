@@ -13,7 +13,7 @@ AZombieBeaconHostObject::AZombieBeaconHostObject()
     ClientBeaconActorClass = AZombieBeaconClient::StaticClass();
     BeaconTypeName = ClientBeaconActorClass->GetName();
 
-    Http = &FHttpModule::Get();
+    // Http = &FHttpModule::Get();
     ServerID = -1;
 }
 
@@ -54,18 +54,18 @@ void AZombieBeaconHostObject::InitialLobbyHandling()
     UpdateLobbyInfo(LobbyInfo);
 }
 
-void AZombieBeaconHostObject::OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success)
-{
-    if (Success)
-    {
-        ServerID = FCString::Atoi(*Response->GetContentAsString());
-        UE_LOG(LogTemp, Warning, TEXT("Success, ID: %d"), ServerID);
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("HttpRequest FAILED"));
-    }
-}
+// void AZombieBeaconHostObject::OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success)
+// {
+//     if (Success)
+//     {
+//         ServerID = FCString::Atoi(*Response->GetContentAsString());
+//         UE_LOG(LogTemp, Warning, TEXT("Success, ID: %d"), ServerID);
+//     }
+//     else
+//     {
+//         UE_LOG(LogTemp, Warning, TEXT("HttpRequest FAILED"));
+//     }
+// }
 
 void AZombieBeaconHostObject::SetServerData(FServerData NewServerData)
 {
@@ -86,17 +86,17 @@ void AZombieBeaconHostObject::SetServerData(FServerData NewServerData)
 
     FJsonSerializer::Serialize(JsonObject.ToSharedRef(), JsonWriter);
 
-    TSharedRef<IHttpRequest> Request = Http->CreateRequest();
-
-    Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
-
-    Request->SetURL("https://localhost:44386/api/Host");
-    Request->SetVerb("POST");
-    Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-
-    Request->SetContentAsString(JsonString);
-
-    Request->ProcessRequest();
+    // TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+    //
+    // Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
+    //
+    // Request->SetURL("https://localhost:44386/api/Host");
+    // Request->SetVerb("POST");
+    // Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    //
+    // Request->SetContentAsString(JsonString);
+    //
+    // Request->ProcessRequest();
 }
 
 void AZombieBeaconHostObject::UpdateServerData(FServerData NewServerData)
@@ -118,17 +118,17 @@ void AZombieBeaconHostObject::UpdateServerData(FServerData NewServerData)
 
     FJsonSerializer::Serialize(JsonObject.ToSharedRef(), JsonWriter);
 
-    TSharedRef<IHttpRequest> Request = Http->CreateRequest();
-
-    Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
-
-    Request->SetURL("https://localhost:44386/api/Host");
-    Request->SetVerb("PUT");
-    Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-
-    Request->SetContentAsString(JsonString);
-
-    Request->ProcessRequest();
+    // TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+    //
+    // Request->OnProcessRequestComplete().BindUObject(this, &AZombieBeaconHostObject::OnProcessRequestComplete);
+    //
+    // Request->SetURL("https://localhost:44386/api/Host");
+    // Request->SetVerb("PUT");
+    // Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+    //
+    // Request->SetContentAsString(JsonString);
+    //
+    // Request->ProcessRequest();
 }
 
 int AZombieBeaconHostObject::GetCurrentPlayerCount()
@@ -213,13 +213,13 @@ void AZombieBeaconHostObject::ShutdownServer()
     if (ServerID != -1)
     {
         // delete the server entry on the Master Server
-        TSharedRef<IHttpRequest> Request = Http->CreateRequest();
-
-        Request->SetURL("https://localhost:44386/api/Host/" + FString::FromInt(ServerID));
-        Request->SetVerb("DELETE");
-        Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-
-        Request->ProcessRequest();
+        // TSharedRef<IHttpRequest> Request = Http->CreateRequest();
+        //
+        // Request->SetURL("https://localhost:44386/api/Host/" + FString::FromInt(ServerID));
+        // Request->SetVerb("DELETE");
+        // Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+        //
+        // Request->ProcessRequest();
     }
 }
 

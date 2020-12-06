@@ -55,7 +55,7 @@ public:
     UZombieGameInstanceBase();
 
 protected:
-    FHttpModule* Http;
+    // FHttpModule* Http;
     
     TArray<FServerData> ServerList;
 
@@ -68,7 +68,7 @@ protected:
     UFUNCTION(BlueprintCallable)
     void GenerateServerList();
 
-    void OnServerListRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
+    // void OnServerListRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
 protected:
     UFUNCTION(BlueprintCallable)

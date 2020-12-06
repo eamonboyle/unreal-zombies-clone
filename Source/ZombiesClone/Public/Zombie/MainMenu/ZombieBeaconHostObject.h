@@ -38,10 +38,10 @@ public:
     AZombieBeaconHostObject();
 
 protected:
-    FHttpModule* Http;
+    // FHttpModule* Http;
     int ServerID;
 
-    void OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
+    // void OnProcessRequestComplete(FHttpRequestPtr Request, FHttpResponsePtr Response, bool Success);
 
 protected:
     FServerData ServerData;
